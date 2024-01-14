@@ -1,8 +1,22 @@
-// src/components/Home.js
+// src/Home.js
 import React from 'react';
 
 function Home() {
-  return <h2>Home</h2>;
+  const handleGetStartedClick = () => {
+    // Add any functionality or navigation logic when the button is clicked
+    alert('Get Started clicked!');
+  };
+
+  return (
+    <div>
+      <h2>event management app</h2>
+      <p>Welcome to our application!</p>
+      <div>
+        <button onClick={handleGetStartedClick}>Get Started</button>
+      </div>
+    </div>
+  );
 }
 
 export default Home;
+
