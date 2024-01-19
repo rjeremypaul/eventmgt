@@ -1,55 +1,59 @@
 // src/components/Login.js
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
 function Login() {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
 
-  const handleSubmit = (e) => {
+  async function submit(e){
     e.preventDefault();
-    // Add logic to handle the login submission, e.g., API call or authentication
-    console.log('Login submitted with data:', formData);
-  };
 
+    try{
+
+
+      await axios.post("url to yung local host", {
+          email , password
+      })
+    
+    }
+    catch{
+
+    }
+  }
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Login</button>
+    <div className="login">
+      <h1>Login</h1>
+
+      <form action="POST">
+        <input
+          type="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          placeholder="Email"
+          name=""
+          id=""
+        />
+        <input
+          type="Password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          placeholder="Password"
+          name=""
+          id=""
+        />
+
+        <input type="submit" onClick={submit}/>
       </form>
-      <p>
-        Don't have an account? <a href="/signup">Sign Up</a>
-      </p>
+
+      <br />
+      <p>or</p>
+      <br />
+
+      <Link to="/signUp">Sign Up Page</Link>
     </div>
   );
 }

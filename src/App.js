@@ -6,6 +6,15 @@ import Explore from './Explore'; // Update the import paths
 import Login from './Login'; // Update the import paths
 import SignUp from './SignUp'; // Update the import paths
 
+const express = require("express")
+const collection = require("./mongo")
+const cors = require("cors")
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true}))
+app.use(cors())
+
 function App() {
   const [view, setView] = useState('home');
 
