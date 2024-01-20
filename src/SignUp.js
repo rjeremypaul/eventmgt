@@ -1,40 +1,41 @@
 // src/components/SignUp.js
 import React, { useState } from 'react';
-import PhoneNumberVerification from './PhoneNumberVerification';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function SignUp() {
+  const history = useHistory();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
-    phone: '', // Adding phone to form data
+    phone: '',
   });
 
   const [isAccountCreated, setIsAccountCreated] = useState(false);
-  const [isPhoneNumberVerified, setIsPhoneNumberVerified] = useState(false);
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    // Add logic to handle the form submission, e.g., API call or authentication
-    console.log('Form submitted with data:', formData);
-
-    // Set isAccountCreated to true after successful account creation
-    setIsAccountCreated(true);
+    try {
+      // Assuming an asynchronous registration function
+      const userData = await registerUser(formData);
+      console.log('User registered:', userData);
+      setIsAccountCreated(true);
+    } catch (error) {
+      console.error('Registration failed:', error.message);
+    }
   };
 
-  const handlePhoneNumberVerification = (isVerified) => {
-    // Handle the result of phone number verification
-    if (isVerified) {
-      console.log('Phone number successfully verified!');
-      setIsPhoneNumberVerified(true);
-    } else {
-      console.log('Phone number verification failed.');
-    }
+  const registerUser = async ({ username, email, password, phone }) => {
+    // Your registration logic here
+    console.log('User registered:', { username, email, password, phone });
+    return { username, email, phone }; // Replace with actual user data
   };
 
   return (
     <div>
-      {!isAccountCreated && !isPhoneNumberVerified ? (
+      {!isAccountCreated ? (
         <div>
           <h2>Sign Up</h2>
           <form onSubmit={handleSignUp}>
@@ -81,14 +82,11 @@ function SignUp() {
             <button type="submit">Sign Up</button>
           </form>
           <p>
-            Already have an account? Login
+            Already have an account? <a href="/login">Login</a>
           </p>
         </div>
       ) : (
-        <PhoneNumberVerification
-          phoneNumber={formData.phone}
-          onVerify={handlePhoneNumberVerification}
-        />
+        <p>Account successfully created!</p>
       )}
     </div>
   );

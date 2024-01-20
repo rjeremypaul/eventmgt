@@ -1,7 +1,10 @@
-// src/components/Login.js
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Login() {
+  const history = useHistory();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -15,36 +18,29 @@ function Login() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add logic to handle the login submission, e.g., API call or authentication
-    console.log('Login submitted with data:', formData);
+    try {
+      // Assuming an asynchronous login function
+      await loginUser(formData);
+      login(); // Assuming this function sets authentication status
+      history.push('/'); // Redirect to home page after login
+    } catch (error) {
+      console.error('Login failed:', error.message);
+    }
+  };
+
+  const loginUser = async ({ username, password }) => {
+    // Your login logic here
+    console.log('User logged in:', { username, password });
+    // Replace with actual login logic
   };
 
   return (
     <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
+        {/* ... (existing form fields) */}
         <button type="submit">Login</button>
       </form>
       <p>
