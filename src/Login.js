@@ -1,59 +1,51 @@
-// src/components/Login.js
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Login() {
+  const history = useHistory();
+  const { login } = useAuth();
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
 
-  const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-  async function submit(e){
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try{
-
-
-      await axios.post("url to yung local host", {
-          email , password
-      })
-    
+    try {
+      // Assuming an asynchronous login function
+      await loginUser(formData);
+      login(); // Assuming this function sets authentication status
+      history.push('/'); // Redirect to home page after login
+    } catch (error) {
+      console.error('Login failed:', error.message);
     }
-    catch{
+  };
 
-    }
-  }
+  const loginUser = async ({ username, password }) => {
+    // Your login logic here
+    console.log('User logged in:', { username, password });
+    // Replace with actual login logic
+  };
+
   return (
-    <div className="login">
-      <h1>Login</h1>
-
-      <form action="POST">
-        <input
-          type="Email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          placeholder="Email"
-          name=""
-          id=""
-        />
-        <input
-          type="Password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          placeholder="Password"
-          name=""
-          id=""
-        />
-
-        <input type="submit" onClick={submit}/>
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        {/* ... (existing form fields) */}
+        <button type="submit">Login</button>
       </form>
-
-      <br />
-      <p>or</p>
-      <br />
-
-      <Link to="/signUp">Sign Up Page</Link>
+      <p>
+        Don't have an account? <a href="/signup">Sign Up</a>
+      </p>
     </div>
   );
 }

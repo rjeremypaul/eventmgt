@@ -1,51 +1,66 @@
 // src/App.js
-import React, { useState } from 'react';
-import './App.css';
-import Home from './Home'; // Update the import paths
-import Explore from './Explore'; // Update the import paths
-import Login from './Login'; // Update the import paths
-import SignUp from './SignUp'; // Update the import paths
-
-const express = require("express")
-const collection = require("./mongo")
-const cors = require("cors")
-const app = express()
-
-app.use(express.json())
-app.use(express.urlencoded({ extended: true}))
-app.use(cors())
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './Home';
+import Explore from './Explore';
+import Login from './Login';
+import SignUp from './SignUp';
+import CreateEvent from './CreateEvent';
+import EventDetails from './EventDetails';
+import EventProponents from './EventProponents';
 
 function App() {
-  const [view, setView] = useState('home');
-
-  const renderView = () => {
-    switch (view) {
-      case 'explore':
-        return <Explore />;
-      case 'login':
-        return <Login />;
-      case 'signup':
-        return <SignUp />;
-      default:
-        return <Home />;
-    }
-  };
-
   return (
-    <div className="App">
-      <nav>
-        <ul>
-          <li onClick={() => setView('home')}>Home</li>
-          <li onClick={() => setView('explore')}>Explore</li>
-          <li onClick={() => setView('login')}>Login</li>
-          <li onClick={() => setView('signup')}>Sign Up</li>
-        </ul>
-      </nav>
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/explore">Explore</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+            <li>
+              <Link to="/create-event">Create Event</Link>
+            </li>
+          </ul>
+        </nav>
 
-      {renderView()}
-    </div>
+        <Switch>
+          <Route path="/explore">
+            <Explore />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/create-event">
+            <CreateEvent />
+          </Route>
+          {/* Example route for event details */}
+          <Route path="/event-details">
+            <EventDetails eventDetails={{ eventName: 'Sample Event', eventDate: '2024-01-21', eventLocation: 'Sample Location' }} />
+          </Route>
+          {/* Example route for event proponents */}
+          <Route path="/event-proponents">
+            <EventProponents proponents={['Organizer 1', 'Organizer 2']} />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
