@@ -1,5 +1,12 @@
 // landinglayout
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+// Usage
+const navigate = useNavigate();
+
+
 
 
 function Home() {
