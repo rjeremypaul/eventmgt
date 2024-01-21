@@ -39,7 +39,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/create-event" element={<CreateEvent />} />
           {/* Example route for event details */}
-          <Route path="/event-details" element={<EventDetails eventDetails={{ eventName: 'Sample Event', eventDate: '2024-01-21', eventLocation: 'Sample Location' }} />} />
+          <Route path="/event-details/:eventName" element={<EventDetails />} />
           {/* Example route for event proponents */}
           <Route path="/event-proponents" element={<EventProponents proponents={['Organizer 1', 'Organizer 2']} />} />
           <Route path="/" element={<Home />} />
