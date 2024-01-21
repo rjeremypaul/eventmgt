@@ -37,7 +37,7 @@ function SignUp() {
     <div>
       {!isAccountCreated ? (
         <div>
-          <h2>Sign Up</h2>
+          <h2>Create an account</h2>
           <form onSubmit={handleSignUp}>
             <label>
               Username:
