@@ -36,8 +36,16 @@ function CreateEvent() {
     // Reset form error state
     setFormError('');
 
-    // Navigate to the EventDetails page
-    navigate('/event-details', { state: { eventData } });
+    try {
+      const savedEvents = JSON.parse(localStorage.getItem('events')) || [];
+      savedEvents.push(eventData);
+      localStorage.setItem('events', JSON.stringify(savedEvents));
+  
+      // Navigate to the EventDetails page
+      navigate('/event-details', { state: { eventData } });
+    } catch (error) {
+      console.error('Error saving events:', error);
+    }
   };
 
   return (
