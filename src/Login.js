@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 function Login() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { login } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
@@ -24,7 +24,7 @@ function Login() {
       // Assuming an asynchronous login function
       await loginUser(formData);
       login(); // Assuming this function sets authentication status
-      history.push('/'); // Redirect to home page after login
+      navigate('/'); // Redirect to home page after login
     } catch (error) {
       console.error('Login failed:', error.message);
     }

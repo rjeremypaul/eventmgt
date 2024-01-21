@@ -1,6 +1,5 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Explore from './Explore';
 import Login from './Login';
@@ -33,31 +32,17 @@ function App() {
           </ul>
         </nav>
 
-        <Switch>
-          <Route path="/explore">
-            <Explore />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/create-event">
-            <CreateEvent />
-          </Route>
+        <Routes>
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/create-event" element={<CreateEvent />} />
           {/* Example route for event details */}
-          <Route path="/event-details">
-            <EventDetails eventDetails={{ eventName: 'Sample Event', eventDate: '2024-01-21', eventLocation: 'Sample Location' }} />
-          </Route>
+          <Route path="/event-details" element={<EventDetails eventDetails={{ eventName: 'Sample Event', eventDate: '2024-01-21', eventLocation: 'Sample Location' }} />} />
           {/* Example route for event proponents */}
-          <Route path="/event-proponents">
-            <EventProponents proponents={['Organizer 1', 'Organizer 2']} />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+          <Route path="/event-proponents" element={<EventProponents proponents={['Organizer 1', 'Organizer 2']} />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </Router>
   );
