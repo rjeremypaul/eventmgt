@@ -10,6 +10,7 @@ function EventDetails({ eventDetails }) {
       <p>Event Name: {eventDetails.eventName}</p>
       <p>Event Date: {eventDetails.eventDate}</p>
       <p>Event Location: {eventDetails.eventLocation}</p>
+      
       {/* Display more event details as needed */}
     </div>
   );

@@ -11,6 +11,7 @@ function CreateEvent() {
   });
 
   const [formError, setFormError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,9 +36,8 @@ function CreateEvent() {
     // Reset form error state
     setFormError('');
 
-    // Optionally, navigate to another page after successful form submission
-    // const navigate = useNavigate();
-    // navigate('/success-page');
+    // Navigate to the EventDetails page
+    navigate('/event-details', { state: { eventData } });
   };
 
   return (
