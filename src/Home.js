@@ -1,5 +1,6 @@
-// src/Home.js
+// landinglayout
 import React from 'react';
+import { Outlet } from 'react-router-dom'
 
 function Home() {
   const handleGetStartedClick = () => {

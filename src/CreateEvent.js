@@ -1,9 +1,10 @@
-// src/components/CreateEvent.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CreateEvent() {
   const [eventData, setEventData] = useState({
     eventName: '',
+    eventDescription: '',
     eventDate: '',
     eventLocation: '',
     // Add more fields as needed
@@ -33,6 +34,16 @@ function CreateEvent() {
             type="text"
             name="eventName"
             value={eventData.eventName}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
+          Event Description:
+          <input
+            type="text"
+            name="eventDescription"
+            value={eventData.eventDescription}
             onChange={handleChange}
           />
         </label>
