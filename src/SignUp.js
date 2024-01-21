@@ -1,10 +1,10 @@
 // src/components/SignUp.js
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 function SignUp() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { login } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
