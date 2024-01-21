@@ -14,9 +14,18 @@ function SignUp() {
   });
 
   const [isAccountCreated, setIsAccountCreated] = useState(false);
+  const [formError, setFormError] = useState('');
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+  
+    // Form validation
+    if (!formData.username || !formData.email || !formData.password || !formData.phone) {
+      setFormError('Please fill out all fields.');
+      // You can set a state to display an error message to the user
+      return;
+    }
+  
     try {
       // Assuming an asynchronous registration function
       const userData = await registerUser(formData);
@@ -26,6 +35,7 @@ function SignUp() {
       console.error('Registration failed:', error.message);
     }
   };
+  
 
   const registerUser = async ({ username, email, password, phone }) => {
     // Your registration logic here
@@ -38,6 +48,7 @@ function SignUp() {
       {!isAccountCreated ? (
         <div>
           <h2>Create an account</h2>
+          {formError && <p style={{ color: 'red' }}>{formError}</p>}
           <form onSubmit={handleSignUp}>
             <label>
               Username:
