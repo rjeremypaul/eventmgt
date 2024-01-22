@@ -43,6 +43,14 @@ function Login() {
     // Your login logic here
     console.log('User logged in:', { email, password });
     // Replace with actual login logic
+
+    // Check if stored username and email match logged in user
+    if (email === localStorage.getItem('email')) {
+      // ... perform additional login logic ...
+    } else {
+      // Handle invalid login attempt
+      console.error('Incorrect email or password.');
+    }
   };
 
   return (

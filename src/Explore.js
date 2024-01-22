@@ -13,7 +13,7 @@ function Explore() {
 
   return (
     <div>
-      <h2>Explore the best events happening around you</h2>
+      <h1 className="pb-12 text-4xl font-bold">Explore the best events happening around you</h1>
       <ul>
         {events.map((event) => (
           <li key={event.eventName}>

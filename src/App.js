@@ -10,6 +10,7 @@ import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
 import EventProponents from './EventProponents';
 import UserProfile from './UserProfile';
+import Landing from './Landing';
 import { AuthProvider, useAuth } from './AuthContext';
 
 function Navigation() {

@@ -32,6 +32,10 @@ function SignUp() {
       console.log('User registered:', userData);
       setIsAccountCreated(true);
 
+      // Save username and email in local storage
+      localStorage.setItem('username', userData.username);
+      localStorage.setItem('email', userData.email);
+
       // Redirect to the login page after successful account creation
       navigate('/login');
 

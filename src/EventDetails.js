@@ -102,10 +102,14 @@ function EventDetails() {
       ) : (
         <>
           <p>Event Name: {eventDetails.eventName}</p>
+          <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
+            About
+          </h2>
+          <div className="display-linebreak text-neutral-800 text-sm font-grostek">
           <p>Event Description: {eventDetails.eventDescription}</p>
           <p>Event Location: {eventDetails.eventLocation}</p>
           <p>Event Date: {eventDetails.eventDate}</p>
-          {/* Display more event details as needed */}
+          </div>
           <button onClick={handleEdit}>Edit</button>
           
         </>
