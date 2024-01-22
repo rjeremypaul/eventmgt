@@ -18,21 +18,15 @@ function SignUp() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+  
     // Form validation
     if (!formData.username || !formData.email || !formData.password || !formData.phone) {
       setFormError('Please fill out all fields.');
+      // You can set a state to display an error message to the user
       return;
     }
-
+  
     try {
-      // Check if the username already exists
-      const isUsernameDuplicate = await checkDuplicateUsername(formData.username);
-      if (isUsernameDuplicate) {
-        setFormError('Username already exists. Please choose another username.');
-        return;
-      }
-
       // Assuming an asynchronous registration function
       const userData = await registerUser(formData);
       console.log('User registered:', userData);
@@ -45,20 +39,12 @@ function SignUp() {
       console.error('Registration failed:', error.message);
     }
   };
+  
 
   const registerUser = async ({ username, email, password, phone }) => {
     // Your registration logic here
     console.log('User registered:', { username, email, password, phone });
     return { username, email, phone }; // Replace with actual user data
-  };
-
-  const checkDuplicateUsername = async (username) => {
-    // Your API call or logic to check if the username already exists
-    // Example: You might make a fetch call to the server to check for username uniqueness
-    // Replace the following line with your actual API endpoint or logic
-    const response = await fetch(`/api/checkUsername/${username}`);
-    const data = await response.json();
-    return data.isDuplicate;
   };
 
   return (
@@ -68,7 +54,47 @@ function SignUp() {
           <h2>Create an account</h2>
           {formError && <p style={{ color: 'red' }}>{formError}</p>}
           <form onSubmit={handleSignUp}>
-            {/* ... rest of the form */}
+            <label>
+              Username:
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              />
+            </label>
+            <br />
+            <label>
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </label>
+            <br />
+            <label>
+              Password:
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              />
+            </label>
+            <br />
+            <label>
+              Phone:
+              <input
+                type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              />
+            </label>
+            <br />
+            <button type="submit">Sign Up</button>
           </form>
           <p>
             Already have an account? <a href="/login">Login</a>
