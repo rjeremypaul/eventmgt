@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+
 function Explore() {
   const events = JSON.parse(localStorage.getItem('events')) || [];
   const navigate = useNavigate();

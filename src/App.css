@@ -1,63 +1,29 @@
-/* src/App.css */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
 .App {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
+  font-family: 'Arial', sans-serif;
 }
 
 nav {
-  background-color: #333;
-  color: white;
-  padding: 10px;
+  background-color: #fefefe;
+  padding: 25px;
+  margin: -1%;
 }
 
-nav ul {
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Set the display property to flex */
-  justify-content: space-around; /* Align items horizontally with space-around */
-  background-color: #f0f0f0; /* Optional: Set a background color */
+  display: flex;
 }
 
-nav ul li {
-  display: inline;
-  margin-right: 10px;
-  cursor: pointer;
+li {
+  margin-right: 40px;
 }
 
-nav ul li:hover {
-  text-decoration: underline;
-}
-
-nav a {
+Link {
   text-decoration: none;
-  color: black; /* Optional: Set the color of the text */
-  padding: 10px 20px; /* Optional: Add padding to the links for better readability */
-  display: inline-block;
-  transition: background-color 0.3s ease; /* Optional: Add a smooth transition effect */
+  color: #f3efef;
+  font-weight: bold;
+  font-size: 19px;
+  transition: color 0.3s ease;
 }
 
-nav a:hover {
-  background-color: #ddd; /* Optional: Change background color on hover */
-}
-
-h2 {
-  color: #333;
-}
