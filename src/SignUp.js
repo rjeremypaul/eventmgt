@@ -5,7 +5,7 @@ import { useAuth } from './AuthContext';
 
 function SignUp() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -31,6 +31,10 @@ function SignUp() {
       const userData = await registerUser(formData);
       console.log('User registered:', userData);
       setIsAccountCreated(true);
+
+      // Redirect to the login page after successful account creation
+      navigate('/login');
+
     } catch (error) {
       console.error('Registration failed:', error.message);
     }
@@ -45,7 +49,7 @@ function SignUp() {
 
   return (
     <div>
-      {!isAccountCreated ? (
+      {!isAuthenticated && !isAccountCreated && (
         <div>
           <h2>Create an account</h2>
           {formError && <p style={{ color: 'red' }}>{formError}</p>}
@@ -96,9 +100,9 @@ function SignUp() {
             Already have an account? <a href="/login">Login</a>
           </p>
         </div>
-      ) : (
-        <p>Account successfully created!</p>
       )}
+
+      {isAccountCreated && <p>Account successfully created! Redirecting to login page...</p>}
     </div>
   );
 }

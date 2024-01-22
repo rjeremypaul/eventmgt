@@ -4,7 +4,7 @@ import { useAuth } from './AuthContext';
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     email: '', // Change username to email
     password: '',
@@ -47,6 +47,9 @@ function Login() {
 
   return (
     <div>
+      {/* Render the login form only if the user is not authenticated */}
+      {!isAuthenticated && (
+        <>
       <h2>Sign in</h2>
       {formError && <p style={{ color: 'red' }}>{formError}</p>}
       <form onSubmit={handleSubmit}>
@@ -75,6 +78,8 @@ function Login() {
       <p>
         Don't have an account? <Link to="/signup">Sign Up</Link>
       </p>
+      </>
+      )}
     </div>
   );
 }
