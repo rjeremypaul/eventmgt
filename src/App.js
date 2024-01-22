@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
@@ -9,62 +9,74 @@ import Logout from './Logout';
 import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
 import EventProponents from './EventProponents';
-import { useAuth } from './AuthContext';
+import UserProfile from './UserProfile';
+import { AuthProvider, useAuth } from './AuthContext';
 
+function Navigation() {
+  const { isAuthenticated, logout } = useAuth();
+
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/explore">Explore</Link>
+        </li>
+        {isAuthenticated ? (
+          <>
+            <li>
+              <Link to="/logout">Logout</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </>
+        )}
+        <li>
+          <Link to="/create-event">Create Event</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
 
 function App() {
-  const { isAuthenticated, logout } = useAuth(); // Add the 'logout' function from the AuthContext
+  const { isAuthenticated, logout } = useAuth();
 
   const handleLogout = () => {
-    // Call the 'logout' function to log the user out
     logout();
   };
 
   return (
     <Router>
-      <div className="App">
-      <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/explore">Explore</Link>
-            </li>
-            {isAuthenticated ? (
-              <>
-                {/* Display these links only if the user is authenticated */}
-                <li>
-                  <Link to="/logout">Logout</Link>
-                </li>
-              </>
-            ) : (
-              <>
-                {/* Display these links only if the user is not authenticated */}
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/signup">Sign Up</Link>
-                </li>
-              </>
-            )}
-          </ul>
-        </nav>
+      <AuthProvider>
+        <div className="App">
+          <Navigation />
 
-        <Routes>
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/create-event" element={<CreateEvent />} />
-          {/* Example route for event details */}
-          <Route path="/event-details/:eventName" element={<EventDetails />} />
-          {/* Example route for event proponents */}
-          <Route path="/event-proponents" element={<EventProponents proponents={['Organizer 1', 'Organizer 2']} />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
+          <Routes>
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/create-event" element={<CreateEvent />} />
+            <Route path="/event-details/:eventName" element={<EventDetails />} />
+            <Route path="/event-proponents" element={<EventProponents proponents={['Organizer 1', 'Organizer 2']} />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
+      </AuthProvider>
     </Router>
   );
 }
