@@ -1,3 +1,4 @@
+// src/components/Login.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
@@ -6,7 +7,7 @@ function Login() {
   const navigate = useNavigate();
   const { login, isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
-    email: '', // Change username to email
+    username: '',
     password: '',
   });
 
@@ -20,16 +21,23 @@ function Login() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     // Form validation
-    if (!formData.email || !formData.password) {
-      setFormError('Please enter both email and password.');
+    if (!formData.username || !formData.password) {
+      setFormError('Please enter both username and password.');
       return;
     }
 
     try {
+      // Check if the username exists
+      const isUsernameValid = await checkUsernameValidity(formData.username);
+      if (!isUsernameValid) {
+        setFormError('Username not found. Please check your username.');
+        return;
+      }
+
       // Assuming an asynchronous login function
       await loginUser(formData);
       login(); // Assuming this function sets authentication status
@@ -39,10 +47,19 @@ function Login() {
     }
   };
 
-  const loginUser = async ({ email, password }) => {
+  const loginUser = async ({ username, password }) => {
     // Your login logic here
-    console.log('User logged in:', { email, password });
+    console.log('User logged in:', { username, password });
     // Replace with actual login logic
+  };
+
+  const checkUsernameValidity = async (username) => {
+    // Your API call or logic to check if the username exists
+    // Example: You might make a fetch call to the server to check for username validity
+    // Replace the following line with your actual API endpoint or logic
+    const response = await fetch(`/api/checkUsername/${username}`);
+    const data = await response.json();
+    return data.isValid;
   };
 
   return (
@@ -50,35 +67,8 @@ function Login() {
       {/* Render the login form only if the user is not authenticated */}
       {!isAuthenticated && (
         <>
-      <h2>Sign in</h2>
-      {formError && <p style={{ color: 'red' }}>{formError}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
-      </>
+          {/* ... rest of the login form */}
+        </>
       )}
     </div>
   );

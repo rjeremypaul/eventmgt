@@ -1,7 +1,9 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
 import Home from './Home';
+import About from './About';
 import Explore from './Explore';
 import Login from './Login';
 import SignUp from './SignUp';
@@ -82,3 +84,4 @@ function App() {
 }
 
 export default App;
+

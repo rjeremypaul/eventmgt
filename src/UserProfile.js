@@ -28,33 +28,29 @@ function UserProfile() {
   return (
     <div>
       <h2>User Profile</h2>
-      {user ? ( // Check if user is defined
-        isEditing ? (
-          <>
-            <label>
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={editedUser.username}
-                onChange={handleChange}
-              />
-            </label>
-            {/* Add more input fields for other user details */}
-            <br />
-            <button onClick={handleSave}>Save</button>
-          </>
-        ) : (
-          <>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            {/* Add more user details as needed */}
-            <button onClick={() => setIsEditing(true)}>Edit Profile</button>
-          </>
-        )
+      {isEditing ? (
+        <>
+          <label>
+            Username:
+            <input
+              type="text"
+              name="username"
+              value={editedUser.username}
+              onChange={handleChange}
+            />
+          </label>
+          {/* Add more input fields for other user details */}
+          <br />
+          <button onClick={handleSave}>Save</button>
+        </>
       ) : (
-        <p>Loading user profile...</p>
+        <>
+          <p>Username: {user.username}</p>
+          <p>Email: {user.email}</p>
+          <p>Phone: {user.phone}</p>
+          {/* Add more user details as needed */}
+          <button onClick={() => setIsEditing(true)}>Edit Profile</button>
+        </>
       )}
     </div>
   );
