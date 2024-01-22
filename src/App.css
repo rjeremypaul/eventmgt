@@ -1,15 +1,29 @@
-* {
+.App {
+  font-family: 'Arial', sans-serif;
+}
+
+nav {
+  background-color: #fefefe;
+  padding: 25px;
+  margin: -1%;
+}
+
+ul {
+  list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
 }
 
-body {
-  background-color: pink;
+li {
+  margin-right: 40px;
 }
 
-.pages {
-  color: white;
-  text-align: center;
-  font-size: 3.5rem;
-  margin-top: 10%;
+Link {
+  text-decoration: none;
+  color: #f3efef;
+  font-weight: bold;
+  font-size: 19px;
+  transition: color 0.3s ease;
 }
+
