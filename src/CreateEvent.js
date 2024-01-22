@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 function CreateEvent() {
+  const { isAuthenticated } = useAuth();
   const [eventData, setEventData] = useState({
     eventName: '',
     eventDescription: '',
@@ -23,6 +25,13 @@ function CreateEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Check if the user is authenticated
+    if (!isAuthenticated) {
+      // If not authenticated, display an error message
+      setFormError('Please log in to create an event.');
+      return;
+    }
 
     // Check if any of the form fields is empty
     if (Object.values(eventData).some((value) => value === '')) {
@@ -52,8 +61,9 @@ function CreateEvent() {
     <div>
       <h2>Create Event</h2>
       {formError && <p style={{ color: 'red' }}>{formError}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
+      {isAuthenticated ? (
+        <form onSubmit={handleSubmit}>
+          <label>
           Title:
           <input
             type="text"
@@ -95,8 +105,11 @@ function CreateEvent() {
         <br />
         {/* Add more input fields as needed */}
         <br />
-        <button type="submit">Create Event</button>
-      </form>
+          <button type="submit">Create Event</button>
+        </form>
+      ) : (
+        <p>Please log in to create an event.</p>
+      )}
     </div>
   );
 }
