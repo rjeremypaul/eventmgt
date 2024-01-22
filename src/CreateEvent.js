@@ -42,7 +42,7 @@ function CreateEvent() {
       localStorage.setItem('events', JSON.stringify(savedEvents));
   
       // Navigate to the EventDetails page
-      navigate('/event-details', { state: { eventData } });
+      navigate('/explore', { state: { eventData } });
     } catch (error) {
       console.error('Error saving events:', error);
     }
@@ -74,6 +74,15 @@ function CreateEvent() {
         </label>
         <br />
         <label>
+          Event Location:
+          <input
+            type="text"
+            name="eventLocation"
+            value={eventData.eventLocation}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
           Event Date:
           <input
             type="date"
@@ -83,15 +92,6 @@ function CreateEvent() {
           />
         </label>
         <br />
-        <label>
-          Event Location:
-          <input
-            type="text"
-            name="eventLocation"
-            value={eventData.eventLocation}
-            onChange={handleChange}
-          />
-        </label>
         {/* Add more input fields as needed */}
         <br />
         <button type="submit">Create Event</button>
