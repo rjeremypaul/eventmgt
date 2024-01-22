@@ -12,14 +12,16 @@ body {
 .nav{
   position: fixed;
   top: 0, left 0; right: 0;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem;
+  padding: 4%;
   z-index:1000;
   justify-content: space-between;
-  padding: 1.5rem 9%;
+  padding: 1rem;
   color: black;
 
+}
+
+.navbar h1{
+  font-size: 25px;
 }
 .navbar ul {
   list-style: none;

@@ -17,7 +17,8 @@ function Navigation() {
   const { isAuthenticated, logout } = useAuth();
 
   return (
-    <nav>
+    <nav class ="navbar">
+     <h1>Event<span>Management</span></h1>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -80,4 +81,3 @@ function App() {
 }
 
 export default App;
-
