@@ -82,6 +82,7 @@ function CreateEvent() {
             onChange={handleChange}
           />
         </label>
+        <br />
         <label>
           Event Date:
           <input
