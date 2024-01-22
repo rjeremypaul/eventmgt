@@ -20,7 +20,7 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/explore">About</Link>
+              <Link to="/explore">Explore</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>
@@ -28,9 +28,9 @@ function App() {
             <li>
               <Link to="/signup">Sign Up</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/create-event">Create Event</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
