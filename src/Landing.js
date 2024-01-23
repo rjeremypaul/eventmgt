@@ -19,6 +19,7 @@ import {
 } from "react-icons/io5";
 import { MdManageHistory, MdOutlineFileDownload, MdOutlinePrivacyTip, MdRsvp } from "react-icons/md";
 import Security from "./Assets/dev.png";
+import Hero2 from"./Assets/3187910.jpg";
 
 
 const data = [
@@ -71,6 +72,7 @@ function Landing() {
       <div className="bg-secondary">
       </div>
       <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
+
         <div
           className="flex flex-col gap-4 items-start justify-evenly text-left py-8 lg:pl-16"
           style={{ flexBasis: "50%" }}

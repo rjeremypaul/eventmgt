@@ -20,6 +20,7 @@ import {
 } from "react-icons/io5";
 import { MdManageHistory, MdOutlineFileDownload, MdOutlinePrivacyTip, MdRsvp } from "react-icons/md";
 import Security from "./Assets/dev.png";
+import Footer from "./Footer";
 
 
 const data = [
@@ -191,8 +192,9 @@ function Home() {
           </p>
         </div>
       </section>
-
+      <Footer/>
     </div>
+    
     
   );
 }
