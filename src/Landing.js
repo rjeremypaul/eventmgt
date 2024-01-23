@@ -1,23 +1,20 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
 import Card from "./Card";
-import { Navigation, Autoplay, Pagination } from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Navigation} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import {
   IoArrowBack,
-  IoArrowDownCircleOutline,
   IoArrowForward,
   IoCreateOutline,
   IoNotificationsOutline,
-  IoPeople,
   IoPeopleOutline,
   IoTicketOutline,
 } from "react-icons/io5";
-import { MdManageHistory, MdOutlineFileDownload, MdOutlinePrivacyTip, MdRsvp } from "react-icons/md";
+import { MdOutlineFileDownload, MdOutlinePrivacyTip} from "react-icons/md";
 import Security from "./Assets/security.jpg";
 import Hero2 from"./Assets/3187910.jpg";
 
@@ -26,53 +23,51 @@ const data = [
   {
     title: "Event Creation Made Easy",
     description:
-      "Seamlessly create and manage events with our intuitive event creation feature. Specify event details, such as date, time, location, and description, to provide a clear picture for your attendees. Customize event settings, add event images, and set ticket options effortlessly.",
+      "Seamlessly create and manage events with our intuitive event creation feature. Specify event details, such as date, time, location, and description, to provide a clear picture for your attendees.",
     icon: <IoCreateOutline />,
   },
   {
-    title: "Realtime Notifications",
+    title: "Realtime Notifications(Coming Soon)",
     description:
       "Stay updated on event activities with our realtime notification feature. Receive notifications on event updates, attendee responses, and more. Never miss out on important event details with our notification feature.",
     icon: <IoNotificationsOutline />,
   },
   {
-    title: "Seamless User Invitations",
+    title: "Participants",
     description:
       "Invite participants effortlessly by sending invitation links directly through our app. Share invitation links via email, messaging apps, or social media platforms. Ensure a smooth registration process and track attendee responses for effective event management.",
     icon: <IoTicketOutline />,
   },
   {
-    title: "Flexible Event Privacy",
+    title: "Flexible Event Privacy(Coming Soon)",
     description:
       "Take control over event visibility with our private and public event options. Host private gatherings with exclusive access for selected participants or organize public events to reach a wider audience. Customize privacy settings to suit the unique needs of each event.",
     icon: <MdOutlinePrivacyTip />,
   },
   {
-    title: "Easy Attendee Management",
+    title: "User Account",
     description:
-      "Keep track of attendees our comprehensive attendee management feature. Easily view and manage RSVPs, track attendance, and collect essential participant information. Scan QR Codes to check-in attendees and ensure a smooth event experience for all participants.",
+      "Let you create account and list your events anytime.",
     icon: <IoPeopleOutline />,
   },
   {
-    title: "Download Attendee List",
+    title: "Edit List",
     description:
-      "Staying always connected is unsure in the age of internet. So SpotLight lets the event owners download a list of attendees for each event with our attendee list download feature. Export attendee lists in XLSX format for easy access and management.",
+      "Staying always connected is unsure in the age of internet. So EventMGT lets the event owners to edit event details.",
     icon: <MdOutlineFileDownload />,
   }
 ];
 
 function Landing() {
-  const swiper = useSwiper();
   const swiperRef = useRef(null);
-
-  const token = JSON.parse(localStorage.getItem("token"));
-
   return (
     <div className="flex-1 bg-white font-poppins select-none">
       <div className="bg-secondary">
       </div>
       <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
-
+      <div className="md:pt-16 " style={{ flexBasis: "50%" }}>
+      <img className="w-full" src={Hero2} alt="Event Hero" />
+        </div>
         <div
           className="flex flex-col gap-4 items-start justify-evenly text-left py-8 lg:pl-16"
           style={{ flexBasis: "50%" }}
@@ -166,7 +161,8 @@ function Landing() {
       </div>
       <section className="flex flex-col-reverse lg:flex-row-reverse w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
         <div className="" style={{ flexBasis: "50%" }}>
-        <img className="w-full md:max-w-[10px] h-auto mx-auto" src={Security} alt="Security" />
+        <img className="w-full md:max-w-[100px] h-auto mx-auto" src={Security} alt="Security" />
+
         </div>
         <div
           className="flex flex-col gap-4 items-start justify-evenly text-left py-8 lg:pr-16"
