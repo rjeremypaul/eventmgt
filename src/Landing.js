@@ -18,7 +18,7 @@ import {
   IoTicketOutline,
 } from "react-icons/io5";
 import { MdManageHistory, MdOutlineFileDownload, MdOutlinePrivacyTip, MdRsvp } from "react-icons/md";
-import Security from "./Assets/dev.png";
+import Security from "./Assets/security.jpg";
 import Hero2 from"./Assets/3187910.jpg";
 
 
