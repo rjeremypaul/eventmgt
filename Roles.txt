@@ -1,0 +1,19 @@
+#Event Management Webapplication
+
+Members:
+
+- Baltazar Charlene
+- Cabigting Monique Kyle
+- Ricerra jeremy Paul
+- Rueras Ritchelle
+
+Assigned tasks
+
+-Baltazar Charlene:
+	Assigned for UI/UX adding the design for the website, manipulate the buttons, fonts and focusing in ui
+-Cabigting Monique Kyle:
+	Focuses with the same aspect, UI/UX adding design for the website, mediaqueries and more
+-Ricerra Jeremy Paul:
+	Backend, functions and backbone of the program
+-Rueras:
+	Backend, functionalities
