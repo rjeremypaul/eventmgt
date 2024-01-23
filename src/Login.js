@@ -54,7 +54,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div class= "context">
       {/* Render the login form only if the user is not authenticated */}
       {!isAuthenticated && (
         <>
