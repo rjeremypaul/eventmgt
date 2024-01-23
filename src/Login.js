@@ -1,12 +1,14 @@
+// src/components/Login.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import styles from './Loginmodule.css'; // Import the CSS module
 
 function Login() {
   const navigate = useNavigate();
   const { login, isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
-    email: '', // Change username to email
+    email: '',
     password: '',
   });
 
@@ -48,45 +50,46 @@ function Login() {
     if (email === localStorage.getItem('email')) {
       // ... perform additional login logic ...
     } else {
-      // Handle invalid login attempt
+      // Handle incorrect login attempt
       console.error('Incorrect email or password.');
     }
   };
 
   return (
-    <div>
-      {/* Render the login form only if the user is not authenticated */}
+    <div className={styles['login-container']}>
       {!isAuthenticated && (
         <>
-      <h2>Sign in</h2>
-      {formError && <p style={{ color: 'red' }}>{formError}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
-      </>
+          <h2 className={styles['login-title']}>Sign in</h2>
+          {formError && <p style={{ color: 'red' }}>{formError}</p>}
+          <form className={styles['login-form']} onSubmit={handleSubmit}>
+            <label className={styles['login-label']}>
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={styles['login-input']}
+              />
+            </label>
+            <label className={styles['login-label']}>
+              Password:
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className={styles['login-input']}
+              />
+            </label>
+            <button type="submit" className={styles['login-button']}>
+              Login
+            </button>
+          </form>
+          <p>
+            Don't have an account? <Link to="/signup">Sign Up</Link>
+          </p>
+        </>
       )}
     </div>
   );
