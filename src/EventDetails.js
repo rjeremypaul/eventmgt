@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 function EventDetails() {
   const { eventName } = useParams();
@@ -8,12 +9,24 @@ function EventDetails() {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [editedEvent, setEditedEvent] = useState(eventDetails);
+  const { isAuthenticated } = useAuth();
 
   const handleEdit = () => {
-    setIsEditing(true);
+    if (isAuthenticated) {
+      setIsEditing(true);
+    } else {
+      // Show a message or redirect to the login page
+      console.log("Please log in to edit this event.");
+    }
   };
 
+
   const handleSave = () => {
+    if (!editedEvent.eventName || !editedEvent.eventDescription || !editedEvent.eventLocation || !editedEvent.eventDate) {
+      console.log("Please provide valid data for all fields.");
+      return;
+    }
+    
     // Add logic to save edited event data (e.g., API call)
     console.log('Saving edited event:', editedEvent);
 
@@ -30,13 +43,19 @@ function EventDetails() {
   };
 
   const handleDelete = () => {
-    // Remove the event from local storage
+    if (isAuthenticated){
+      // Remove the event from local storage
     const events = JSON.parse(localStorage.getItem('events')) || [];
     const updatedEvents = events.filter((event) => event.eventName !== eventName);
     localStorage.setItem('events', JSON.stringify(updatedEvents));
 
     // Redirect to the Explore page after deleting the event
     navigate('/explore');
+    }else {
+      // Show a message or redirect to the login page
+      console.log("Please log in to delete this event.");
+    }
+    
   };
 
   const handleChange = (e) => {
@@ -54,7 +73,9 @@ function EventDetails() {
   return (
     <div>
       <h2>Event Details for <br/>{eventName}</h2>
-      {isEditing ? (
+      {isAuthenticated ? ( // Only show the Edit and Delete buttons if the user is authenticated
+        <div>
+          {isEditing ? (
         <>
           <label>
             Event Name:
@@ -111,11 +132,16 @@ function EventDetails() {
           <p>Event Date: {eventDetails.eventDate}</p>
           </div>
           <button onClick={handleEdit}>Edit</button>
-          
+    <button onClick={handleDelete}>Delete</button>
         </>
       )}
+      </div>
+      ) : (
+        // Display a message or redirect to the login page if the user is not authenticated
+        <p>Please log in to edit or delete this event.</p>
+      )}
 
-      <button onClick={handleDelete}>Delete</button>
+      
     </div>
   );
 }

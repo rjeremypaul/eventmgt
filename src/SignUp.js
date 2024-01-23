@@ -84,7 +84,46 @@ function SignUp() {
           <h2>Create an account</h2>
           {formError && <p style={{ color: 'red' }}>{formError}</p>}
           <form onSubmit={handleSignUp}>
-            {/* ... (other form elements) */}
+          <label>
+              Username:
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              />
+            </label>
+            <br />
+            <label>
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </label>
+            <br />
+            <label>
+              Password:
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              />
+            </label>
+            <br />
+            <label>
+              Phone:
+              <input
+                type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              />
+            </label>
+            <br />
             <button type="submit">Sign Up</button>
           </form>
           <p>

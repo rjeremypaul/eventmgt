@@ -1,25 +1,23 @@
-// landinglayout
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import Card from "./Card";
-import { Navigation, Autoplay, Pagination } from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Navigation} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import {
   IoArrowBack,
-  IoArrowDownCircleOutline,
   IoArrowForward,
   IoCreateOutline,
   IoNotificationsOutline,
-  IoPeople,
   IoPeopleOutline,
   IoTicketOutline,
 } from "react-icons/io5";
-import { MdManageHistory, MdOutlineFileDownload, MdOutlinePrivacyTip, MdRsvp } from "react-icons/md";
-import Security from "./Assets/dev.png";
+import { MdOutlineFileDownload, MdOutlinePrivacyTip} from "react-icons/md";
+import Security from "./Assets/security.jpg";
+import Hero2 from"./Assets/3187910.jpg";
 import Footer from "./Footer";
 
 
@@ -27,8 +25,14 @@ const data = [
   {
     title: "Event Creation Made Easy",
     description:
-      "Seamlessly create and manage events with our intuitive event creation feature. Specify event details, such as date, time, location, and description.",
+      "Seamlessly create and manage events with our intuitive event creation feature. Specify event details, such as date, time, location, and description, to provide a clear picture for your attendees.",
     icon: <IoCreateOutline />,
+  },
+  {
+    title: "Realtime Notifications(Coming Soon)",
+    description:
+      "Stay updated on event activities with our realtime notification feature. Receive notifications on event updates, attendee responses, and more. Never miss out on important event details with our notification feature.",
+    icon: <IoNotificationsOutline />,
   },
   {
     title: "Participants",
@@ -37,9 +41,9 @@ const data = [
     icon: <IoTicketOutline />,
   },
   {
-    title: "Flexible Event Privacy",
+    title: "Flexible Event Privacy(Coming Soon)",
     description:
-      "Take control over event visibility with our private and public event options. Host private gatherings with exclusive access for selected participants or organize public events to reach a wider audience. ",
+      "Take control over event visibility with our private and public event options. Host private gatherings with exclusive access for selected participants or organize public events to reach a wider audience. Customize privacy settings to suit the unique needs of each event.",
     icon: <MdOutlinePrivacyTip />,
   },
   {
@@ -51,19 +55,19 @@ const data = [
   {
     title: "Edit List",
     description:
-      "Staying always connected is unsure in the age of internet. So EventManagement lets the event owners to edit event details.",
+      "Staying always connected is unsure in the age of internet. So EventMGT lets the event owners to edit event details.",
     icon: <MdOutlineFileDownload />,
   }
 ];
 
-function Home() {
+
+
+function Landing() {
   const swiperRef = useRef(null);
   const navigate = useNavigate();
   const handleGetStartedClick = () => {
     navigate('/create-event');
   };
-
- 
   return (
     <div className="flex-1 bg-white font-poppins select-none">
       <div className="bg-secondary">
@@ -75,7 +79,10 @@ function Home() {
               <button onClick={handleGetStartedClick}>Get Started</button>
             </div>
           </div>
-          <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
+      <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
+      <div className="md:pt-16 " style={{ flexBasis: "50%" }}>
+      <img className="w-full" src={Hero2} alt="Event Hero" />
+        </div>
         <div
           className="flex flex-col gap-4 items-start justify-evenly text-left py-8 lg:pl-16"
           style={{ flexBasis: "50%" }}
@@ -168,8 +175,8 @@ function Home() {
         </Swiper>
       </div>
       <section className="flex flex-col-reverse lg:flex-row-reverse w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
-        <div className="" style={{ flexBasis: "50%" }}>
-        <img className="w-full md:max-w-[10px] h-auto mx-auto" src={Security} alt="Security" />
+      <div className="" style={{ flexBasis: "50%" }}>
+          <img className="w-full" src={Security} />
         </div>
         <div
           className="flex flex-col gap-4 items-start justify-evenly text-left py-8 lg:pr-16"
@@ -194,9 +201,7 @@ function Home() {
       </section>
       <Footer/>
     </div>
-    
-    
   );
 }
 
-export default Home;
+export default Landing;
