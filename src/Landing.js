@@ -1,6 +1,5 @@
-// landinglayout
-import React, { useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 import Card from "./Card";
 import { Navigation, Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -19,19 +18,25 @@ import {
   IoTicketOutline,
 } from "react-icons/io5";
 import { MdManageHistory, MdOutlineFileDownload, MdOutlinePrivacyTip, MdRsvp } from "react-icons/md";
-import Security from "./Assets/dev.png";
-import Footer from "./Footer";
+import Security from "./Assets/security.jpg";
+import Hero2 from"./Assets/3187910.jpg";
 
 
 const data = [
   {
     title: "Event Creation Made Easy",
     description:
-      "Seamlessly create and manage events with our intuitive event creation feature. Specify event details, such as date, time, location, and description.",
+      "Seamlessly create and manage events with our intuitive event creation feature. Specify event details, such as date, time, location, and description, to provide a clear picture for your attendees. Customize event settings, add event images, and set ticket options effortlessly.",
     icon: <IoCreateOutline />,
   },
   {
-    title: "Participants",
+    title: "Realtime Notifications",
+    description:
+      "Stay updated on event activities with our realtime notification feature. Receive notifications on event updates, attendee responses, and more. Never miss out on important event details with our notification feature.",
+    icon: <IoNotificationsOutline />,
+  },
+  {
+    title: "Seamless User Invitations",
     description:
       "Invite participants effortlessly by sending invitation links directly through our app. Share invitation links via email, messaging apps, or social media platforms. Ensure a smooth registration process and track attendee responses for effective event management.",
     icon: <IoTicketOutline />,
@@ -39,43 +44,35 @@ const data = [
   {
     title: "Flexible Event Privacy",
     description:
-      "Take control over event visibility with our private and public event options. Host private gatherings with exclusive access for selected participants or organize public events to reach a wider audience. ",
+      "Take control over event visibility with our private and public event options. Host private gatherings with exclusive access for selected participants or organize public events to reach a wider audience. Customize privacy settings to suit the unique needs of each event.",
     icon: <MdOutlinePrivacyTip />,
   },
   {
-    title: "User Account",
+    title: "Easy Attendee Management",
     description:
-      "Let you create account and list your events anytime.",
+      "Keep track of attendees our comprehensive attendee management feature. Easily view and manage RSVPs, track attendance, and collect essential participant information. Scan QR Codes to check-in attendees and ensure a smooth event experience for all participants.",
     icon: <IoPeopleOutline />,
   },
   {
-    title: "Edit List",
+    title: "Download Attendee List",
     description:
-      "Staying always connected is unsure in the age of internet. So EventManagement lets the event owners to edit event details.",
+      "Staying always connected is unsure in the age of internet. So SpotLight lets the event owners download a list of attendees for each event with our attendee list download feature. Export attendee lists in XLSX format for easy access and management.",
     icon: <MdOutlineFileDownload />,
   }
 ];
 
-function Home() {
+function Landing() {
+  const swiper = useSwiper();
   const swiperRef = useRef(null);
-  const navigate = useNavigate();
-  const handleGetStartedClick = () => {
-    navigate('/create-event');
-  };
 
- 
+  const token = JSON.parse(localStorage.getItem("token"));
+
   return (
     <div className="flex-1 bg-white font-poppins select-none">
       <div className="bg-secondary">
       </div>
-      <div class= "content">
-            <h3>HIGHLY INTERACTIVE <span>WEBINARS</span> AND<span> EVENT </span>IN MINUTES</h3>
+      <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
 
-            <div>
-              <button onClick={handleGetStartedClick}>Get Started</button>
-            </div>
-          </div>
-          <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
         <div
           className="flex flex-col gap-4 items-start justify-evenly text-left py-8 lg:pl-16"
           style={{ flexBasis: "50%" }}
@@ -192,11 +189,8 @@ function Home() {
           </p>
         </div>
       </section>
-      <Footer/>
     </div>
-    
-    
   );
 }
 
-export default Home;
+export default Landing;

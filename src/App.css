@@ -1,29 +1,141 @@
-.App {
-  font-family: 'Arial', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: rgb(236, 234, 234);
+  margin:0; padding:0;
+  outline: none; border: 1%;
+  text-decoration: none;
+  transition: .2s linear;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+.nav{
+  position: fixed;
+  top: 0, left 0; right: 0;
+  padding: 4%;
+  z-index:1000;
+  justify-content: space-between;
+  padding: 1rem;
+  color: black;
+
 }
 
-nav {
-  background-color: #fefefe;
-  padding: 25px;
-  margin: -1%;
+.navbar h1{
+  font-size: 25px;
 }
-
-ul {
+.navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: right;
 }
-
+.navbar span{
+  color: blue;
+}
 li {
-  margin-right: 40px;
+  margin-right: 100px;
+}
+#Home 
+
+div {
+  text-align: center;
+  margin-top: 100px; 
+}
+.content {
+  text-align: center;
+  padding-top: 6rem;
+  margin: 2rem auto;
+  max-width: 70rem;
+}
+.content h3{
+  font-size:  50px;
+  
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #41658b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-content: center;
 }
 
-Link {
-  text-decoration: none;
-  color: #f3efef;
+button:hover {
+  background-color: #0a2139;
+}
+
+/* Login.css */
+
+.context {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.context h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.label {
+  margin-bottom: 8px;
   font-weight: bold;
-  font-size: 19px;
-  transition: color 0.3s ease;
 }
 
+input {
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p.error-message {
+  color: red;
+  text-align: center;
+}

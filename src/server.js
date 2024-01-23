@@ -27,6 +27,12 @@ app.post('/api/register', async (req, res) => {
   const { username, email, password, phone } = req.body;
 
   try {
+    // Check if the user already exists in MongoDB
+    const existingUserMongo = await User.findOne({ email });
+    if (existingUserMongo) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
     // Check if the user already exists in the CSV file
     const isUserDuplicate = await checkDuplicateUser(email);
     if (isUserDuplicate) {
@@ -34,11 +40,6 @@ app.post('/api/register', async (req, res) => {
     }
 
     // Save the user to MongoDB
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
-    }
-
     const newUser = new User({ username, email, password, phone });
     await newUser.save();
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 function CreateEvent() {
+  const { isAuthenticated } = useAuth();
   const [eventData, setEventData] = useState({
     eventName: '',
     eventDescription: '',
@@ -24,6 +26,13 @@ function CreateEvent() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Check if the user is authenticated
+    if (!isAuthenticated) {
+      // If not authenticated, display an error message
+      setFormError('Please log in to create an event.');
+      return;
+    }
+
     // Check if any of the form fields is empty
     if (Object.values(eventData).some((value) => value === '')) {
       setFormError('Please fill out all fields.');
@@ -42,7 +51,7 @@ function CreateEvent() {
       localStorage.setItem('events', JSON.stringify(savedEvents));
   
       // Navigate to the EventDetails page
-      navigate('/event-details', { state: { eventData } });
+      navigate('/explore', { state: { eventData } });
     } catch (error) {
       console.error('Error saving events:', error);
     }
@@ -52,8 +61,9 @@ function CreateEvent() {
     <div>
       <h2>Create Event</h2>
       {formError && <p style={{ color: 'red' }}>{formError}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
+      {isAuthenticated ? (
+        <form onSubmit={handleSubmit}>
+          <label>
           Title:
           <input
             type="text"
@@ -74,6 +84,16 @@ function CreateEvent() {
         </label>
         <br />
         <label>
+          Event Location:
+          <input
+            type="text"
+            name="eventLocation"
+            value={eventData.eventLocation}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
           Event Date:
           <input
             type="date"
@@ -83,19 +103,13 @@ function CreateEvent() {
           />
         </label>
         <br />
-        <label>
-          Event Location:
-          <input
-            type="text"
-            name="eventLocation"
-            value={eventData.eventLocation}
-            onChange={handleChange}
-          />
-        </label>
         {/* Add more input fields as needed */}
         <br />
-        <button type="submit">Create Event</button>
-      </form>
+          <button type="submit">Create Event</button>
+        </form>
+      ) : (
+        <p>Please log in to create an event.</p>
+      )}
     </div>
   );
 }
