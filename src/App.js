@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Explore from './Explore';
 import Login from './Login';
@@ -10,57 +10,17 @@ import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
 import EventProponents from './EventProponents';
 import UserProfile from './UserProfile';
-import { AuthProvider, useAuth } from './AuthContext';
+import { AuthProvider } from './AuthContext';
+import Navbar from './Navbar';
 
-function Navigation() {
-  const { isAuthenticated, logout } = useAuth();
 
-  return (
-    <nav class ="navbar">
-     <h1>Event<span>Management</span></h1>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/explore">Explore</Link>
-        </li>
-        {isAuthenticated ? (
-          <>
-            <li>
-              <Link to="/logout">Logout</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
-  );
-}
 
 function App() {
-  const { isAuthenticated, logout } = useAuth();
-
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
     <Router>
       <AuthProvider>
         <div className="App">
-          <Navigation />
+          <Navbar />
 
           <Routes>
             <Route path="/explore" element={<Explore />} />

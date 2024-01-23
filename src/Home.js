@@ -71,13 +71,26 @@ function Landing() {
   return (
     <div className="flex-1 bg-white font-poppins select-none">
       <div className="bg-secondary">
-      </div>
-      <div class= "content">
-            <h3>HIGHLY INTERACTIVE <span>WEBINARS</span> AND<span> EVENT </span>IN MINUTES</h3>
-
+      <section className="flex flex-col text-center w-full items-center py-8 lg:py-16 justify-center gap-8 md:gap-0 container min-h-[75vh] relative">
+          <div
+            className="flex flex-col gap-4 items-center justify-center z-10"
+            style={{ flexBasis: "50%" }}
+          >
+            <h1 className=" text-2xl md:text-4xl lg:text-6xl text-slate-100 font-bold leading-relaxed lg:leading-normal drop-shadow-2xl">
+            HIGHLY INTERACTIVE WEBINARS AND 
+              <br />
+              EVENT IN MINUTES
+            </h1>
+            <p className=" md:max-w-[90%] py-4 text-slate-400">
+              Management Made Effortless for Creators
+            </p>
+            <div class= "content">
             <div>
               <button onClick={handleGetStartedClick}>Get Started</button>
             </div>
+            </div>
+          </div>
+          </section>
           </div>
       <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
       <div className="md:pt-16 " style={{ flexBasis: "50%" }}>
