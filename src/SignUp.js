@@ -1,4 +1,4 @@
-// src/components/SignUp.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
@@ -86,7 +86,7 @@ function SignUp() {
           {formError && <p style={{ color: 'red' }}>{formError}</p>}
           <form onSubmit={handleSignUp}>
           <label>
-              Username:
+          <h1>Username:</h1>
               <input
                 type="text"
                 name="username"
@@ -96,7 +96,7 @@ function SignUp() {
             </label>
             <br />
             <label>
-              Email:
+              <h2>Email:</h2>
               <input
                 type="email"
                 name="email"
@@ -106,7 +106,7 @@ function SignUp() {
             </label>
             <br />
             <label>
-              Password:
+              <h1>Password:</h1>
               <input
                 type="password"
                 name="password"
@@ -116,7 +116,7 @@ function SignUp() {
             </label>
             <br />
             <label>
-              Phone:
+              <h2>Phone:</h2>
               <input
                 type="text"
                 name="phone"
@@ -126,11 +126,12 @@ function SignUp() {
             </label>
             <br />
             <button type="submit">Sign Up</button>
-          </form>
+
           <p>
             Already have an account? <a href="/login">Login</a>
           </p>
-        </div>
+          </form> 
+          </div>
       )}
 
       {isAccountCreated && <p>Account successfully created! Redirecting to login page...</p>}
