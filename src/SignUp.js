@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import styles from './SignUpmodule.css';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -80,7 +81,7 @@ function SignUp() {
   return (
     <div>
       {!isAuthenticated && !isAccountCreated && (
-        <div>
+        <div class = "content">
           <h2>Create an account</h2>
           {formError && <p style={{ color: 'red' }}>{formError}</p>}
           <form onSubmit={handleSignUp}>
