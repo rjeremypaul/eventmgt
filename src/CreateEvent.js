@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import BackBtn from './BackBtn';
+import { MdUpload } from "react-icons/md";
 
 function CreateEvent() {
   const { isAuthenticated } = useAuth();
@@ -11,6 +13,8 @@ function CreateEvent() {
     eventLocation: '',
     eventImage: '',
   });
+
+  const pageTitle = "Create Event";
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -75,10 +79,12 @@ function CreateEvent() {
 
   return (
     <div>
-      <h2>Create Event</h2>
+      <BackBtn to={"/"} />
+      <div className="py-4">
+        <h1 className="page-title">{pageTitle}</h1>
       {formError && <p style={{ color: 'red' }}>{formError}</p>}
       {isAuthenticated ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 pt-8">
           <label>
           Title:
           <input
@@ -119,7 +125,7 @@ function CreateEvent() {
           />
         </label>
         <label>
-            Event Image:
+        Upload Feauture Image:
             <input
               type="file"
               accept="image/*"
@@ -129,10 +135,13 @@ function CreateEvent() {
         <br />
         <br />
           <button type="submit">Create Event</button>
+          
         </form>
       ) : (
         <p>Please log in to create an event.</p>
       )}
+
+    </div>
     </div>
   );
 }
