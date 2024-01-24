@@ -34,10 +34,10 @@ form {
 
 .context label {
   margin-bottom: 10px;
-  font-weight: bold;
+  text-align: center;
 }
 
-input {
+.context input {
   padding: 5px;
   margin-bottom: 12px;
   border: 1px solid #ccc;
@@ -49,14 +49,15 @@ input {
   background-color: #3b92ef;
   color: #322929;
   border-radius: 3px;
+  margin-top: 10px;
 }
 
 button:hover {
-  background-color: #59a1ee;
+  background-color: #3a70aa;
 }
 
-p {
-  margin-top: 10px;
+.context p {
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -65,11 +66,10 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+.context a:hover {
   text-decoration: underline;
 }
-
-p.error-message {
+.context p.error-message {
   color: red;
   text-align: center;
 }
