@@ -1,4 +1,4 @@
-.content {
+  .signup {
     max-width: 500px;
     height: 600px;
     margin: auto;
@@ -10,13 +10,13 @@
     margin-top: 80px;
     margin-right: 240px;
   }
-  .content h2 {
+  .signup {
     text-align: center;
     color: #080808;
-    font-size: larger;
+    font-size: larger;  
   }
   
-  form {
+  .signup form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
@@ -31,19 +31,20 @@
     height: 400px;
   }
   
-  .content label {
+  .signup label {
     margin-bottom: 10px;
     text-align: right;
   }
   
-  .content input {
-    padding: 4px;
+  .signup input {
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    row-gap: 3rem;
+    row-gap: 1rem;
+    font-size: small;
   }
   
-  .content button {
+  .signup button {
     padding: 10px;
     background-color: #3b92ef;
     color: #322929;
@@ -51,24 +52,24 @@
     margin-top: 10px;
   }
   
-  button:hover {
+  .signup button:hover {
     background-color: #3a70aa;
   }
   
-  .content p {
+  .signup p {
     margin-top: 20px;
     text-align: center;
   }
   
-  a {
+  .signup a {
     color: #007bff;
     text-decoration: none;
   }
   
-  .content a:hover {
+  .signup a:hover {
     text-decoration: underline;
   }
-  .content p.error-message {
+  .signup p.error-message {
     color: red;
     text-align: center;
   }

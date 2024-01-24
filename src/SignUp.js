@@ -81,7 +81,7 @@ function SignUp() {
   return (
     <div>
       {!isAuthenticated && !isAccountCreated && (
-        <div class = "content">
+        <div class = "signup">
           <h2>Create an account</h2>
           {formError && <p style={{ color: 'red' }}>{formError}</p>}
           <form onSubmit={handleSignUp}>
