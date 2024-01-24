@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import BackBtn from './BackBtn';
 
 
 
@@ -18,11 +19,9 @@ function EventDetails() {
     if (isAuthenticated) {
       setIsEditing(true);
     } else {
-      // Show a message or redirect to the login page
       console.log("Please log in to edit this event.");
     }
   };
-
 
   const handleSave = () => {
     if (!editedEvent.eventName || !editedEvent.eventDescription || !editedEvent.eventLocation || !editedEvent.eventDate) {
@@ -30,7 +29,6 @@ function EventDetails() {
       return;
     }
     
-    // Add logic to save edited event data (e.g., API call)
     console.log('Saving edited event:', editedEvent);
 
     // Update local storage with the edited event data
@@ -101,6 +99,7 @@ function EventDetails() {
 
   return (
     <div>
+      <BackBtn to="/explore" />
       <h2>Event Details for <br/>{eventName}</h2>
       {isAuthenticated ? ( // Only show the Edit and Delete buttons if the user is authenticated
         <div>
