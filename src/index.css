@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
+body {
+  background-image: url("background1.jpg");
+  background-color: #cccccc;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -58,7 +63,7 @@ body,
 }
 
 .event-swiper {
-  padding-inline: 0 !important; 
+  padding-inline: 0 !important;
   padding-block: var(--event-swiper-padding-block) !important;
 }
 
@@ -86,11 +91,13 @@ body,
   .swiper {
     padding-inline: 5rem !important;
   }
+
   .testimonial-slider {
     padding-inline: 0 !important;
   }
+
   .event-swiper {
-    padding-inline: 0 !important; 
+    padding-inline: 0 !important;
     padding-block: var(--event-swiper-padding-block) !important;
   }
 }
@@ -99,11 +106,13 @@ body,
   .swiper {
     padding-inline: 2rem !important;
   }
+
   .testimonial-slider {
     padding-inline: 0 !important;
   }
+
   .event-swiper {
-    padding-inline: 0 !important; 
+    padding-inline: 0 !important;
     padding-block: var(--event-swiper-padding-block) !important;
   }
 }
@@ -124,11 +133,13 @@ input[type=number] {
   .swiper {
     padding-inline: 1rem !important;
   }
+
   .testimonial-slider {
     padding-inline: 0 !important;
   }
+
   .event-swiper {
-    padding-inline: 0 !important; 
+    padding-inline: 0 !important;
     padding-block: var(--event-swiper-padding-block) !important;
   }
 }
@@ -146,11 +157,11 @@ input[type=number] {
 }
 
 .primary-btn {
-  @apply p-2 px-4 my-2 rounded-md text-sm font-medium text-white bg-primary hover:shadow-md focus:outline-none  inline-flex items-center gap-2
+  @apply p-2 px-4 my-2 rounded-md text-sm font-medium text-white bg-primary hover:shadow-md focus:outline-none inline-flex items-center gap-2
 }
 
 .page-title {
-    @apply text-2xl font-bold;
+  @apply text-2xl font-bold;
 }
 
 form {
