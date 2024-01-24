@@ -16,9 +16,13 @@ import {
   IoTicketOutline,
 } from "react-icons/io5";
 import { MdOutlineFileDownload, MdOutlinePrivacyTip} from "react-icons/md";
+
+
 import Security from "./Assets/security.jpg";
 import Hero2 from"./Assets/3187910.jpg";
+import background from"./Assets/background1.jpg";
 import Footer from "./Footer";
+
 
 
 const data = [
