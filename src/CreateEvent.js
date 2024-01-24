@@ -9,8 +9,24 @@ function CreateEvent() {
     eventDescription: '',
     eventDate: '',
     eventLocation: '',
-    // Add more fields as needed
+    eventImage: '',
   });
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setEventData((prevData) => ({
+        ...prevData,
+        eventImage: reader.result,
+      }));
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
 
   const [formError, setFormError] = useState('');
   const navigate = useNavigate();
@@ -102,8 +118,15 @@ function CreateEvent() {
             onChange={handleChange}
           />
         </label>
+        <label>
+            Event Image:
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+          </label>
         <br />
-        {/* Add more input fields as needed */}
         <br />
           <button type="submit">Create Event</button>
         </form>
