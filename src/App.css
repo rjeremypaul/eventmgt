@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
 body {
   font-family: 'Nunito Sans', sans-serif;
-  background: rgb(236, 234, 234);
+  background: rgb(247, 244, 244);
   margin:0; padding:0;
   outline: none; border: 1%;
   text-decoration: none;
@@ -16,7 +16,7 @@ body {
   z-index:1000;
   justify-content: space-between;
   padding: 1rem;
-  color: black;
+  color: rgb(41, 40, 40);
 
 }
 
