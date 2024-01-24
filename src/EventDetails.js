@@ -2,12 +2,22 @@ import React, { useState } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import BackBtn from './BackBtn';
+import { MdComputer, MdCurrencyRupee } from "react-icons/md";
+import {
+  IoBookmarkOutline,
+  IoCalendarClearOutline,
+  IoLanguageOutline,
+  IoLocationOutline,
+  IoTimerOutline,
+  IoWalletOutline,
+} from "react-icons/io5";
+import { shareLinks } from './shareLinks';
 
 
 
 function EventDetails() {
   const { eventName } = useParams();
-  const { state } = useLocation();
+  const { state, pathname } = useLocation();
   const eventDetails = state ? state.eventData : null;
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
@@ -98,9 +108,12 @@ function EventDetails() {
   };
 
   return (
+    
     <div>
       <BackBtn to="/explore" />
-      <h2>Event Details for <br/>{eventName}</h2>
+      <section className="container py-8 pb-16 w-full font-poppins">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:items-start">
+
       {isAuthenticated ? ( // Only show the Edit and Delete buttons if the user is authenticated
         <div>
           {isEditing ? (
@@ -224,23 +237,96 @@ function EventDetails() {
       ) : (
         
         <>
-          <p>Event Name: {eventDetails.eventName}</p>
-          <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
-            About
-          </h2>
-          <div className="display-linebreak text-neutral-800 text-sm font-grostek">
-          <p>Event Description: {eventDetails.eventDescription}</p>
-          <p>Event Location: {eventDetails.eventLocation}</p>
-          <p>Event Date: {eventDetails.eventDate}</p>
+          <div className="col-span-4 space-y-4">
+            {editedEvent.eventImage && (
+                <img
+                  src={editedEvent.eventImage}
+                  alt="Event"
+                  className="rounded-lg w-full aspect-video object-cover"
+                />
+              )}
+              <div className="flex flex-col md:hidden w-full space-y-4">
+                <div className="rounded-lg flex flex-col gap-4 outline w-full outline-1 outline-neutral-300 p-6">
+                <h2 className="font-bold text-xl">{eventDetails.eventName}</h2>
+              
+                </div>
+
+
+
+              </div>
+              <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
+                About
+              </h2>
+              <div className="display-linebreak text-neutral-800 text-sm font-grostek">
+                {eventDetails.eventDescription}
+              </div>
+              <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
+                Terms and Conditions
+              </h2>
+              <div className="display-linebreak text-neutral-800 text-sm font-grostek">
+              Please carry a valid ID proof along with you.
+              <br/>
+              No refunds on purchased ticket are possible, even in case of any rescheduling.<br/>
+              Security procedures, including frisking remain the right of the management.<br/>
+              No dangerous or potentially hazardous objects including but not limited to weapons, knives, guns, fireworks, helmets, lazer devices, bottles, musical instruments will be allowed in the venue and may be ejected with or without the owner from the venue.<br/>
+              The sponsors/performers/organizers are not responsible for any injury or damage occurring due to the event.<br/>
+              People in an inebriated state may not be allowed entry.<br/>
+              Organizers hold the right to deny late entry to the event.<br/>
+              Venue rules apply.
+              </div>
+              
+
           </div>
-          
+          <div className="col-span-2 hidden md:block w-full space-y-4">
+            <div className="rounded-lg flex flex-col gap-4 outline w-full  outline-1 outline-neutral-300 p-6">
+              <h2 className="font-bold text-xl">{eventDetails.eventName}</h2>
+              <h2 className="inline-flex items-center gap-2 text-sm">
+                <IoCalendarClearOutline /> {eventDetails.eventDate}
+              </h2>
+              
+              <h2 className="inline-flex items-center gap-2 text-sm">
+                <IoLocationOutline /> {eventDetails.eventLocation}
+              </h2>
+              <h2 className="inline-flex flex-wrap items-center gap-2 text-sm">
+                <>
+                  <iframe
+                    title="map"
+                    className="w-full h-max outline outline-1 outline-neutral-300 shadow-md rounded-lg flex-1 mt-2"
+                    src={`https://maps.google.com/maps?q=${eventDetails.eventLocation[1]},${eventDetails.eventLocation[2]}&hl=en&output=embed`}
+                  ></iframe>
+                </>
+              </h2>
+            </div>
+            <div className="inline-flex w-full items-center gap-2">
+              <div className="mr-auto">
+                <h2 className="font-semibold text-lg">Invite your friends</h2>
+                  <p className="text-xs text-neutral-500 font-grostek">
+                    and enjoy a shared experience!
+                  </p>
+              </div>
+              {shareLinks?.map((link, index) => (
+                <a
+                  href={link?.share(
+                  `${window.location.origin}${pathname}`,
+                  eventDetails.eventName
+                  )}
+                  target="_blank"
+                  title={`Share on ${link?.title}`}
+                  className={`border flex items-center justify-center rounded-full p-2 text-xl hover:scale-125 transition-all text-white bg-gradient-to-br ${link?.color}`}
+                >
+                {link?.icon}
+              </a>
+              ))}
+            </div>
+          </div>
        
         </>
         
       )}
-
-      
+      </div>
+       </section>
     </div>
+   
   );
 }
 
