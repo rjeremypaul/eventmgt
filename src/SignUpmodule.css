@@ -1,6 +1,6 @@
   .signup {
     max-width: 500px;
-    height: 600px;
+    height: 660px;
     margin: auto;
     padding: 20px;
     border: 1px solid #dbd6d6;
@@ -32,16 +32,17 @@
   }
   
   .signup label {
-    margin-bottom: 10px;
+    margin-bottom: -3px;
     text-align: right;
   }
   
   .signup input {
-    padding: 5px;
+    padding: 2px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
     row-gap: 1rem;
-    font-size: small;
+    width:300px;
+    margin-left: 20px;
   }
   
   .signup button {
@@ -49,7 +50,7 @@
     background-color: #3b92ef;
     color: #322929;
     border-radius: 3px;
-    margin-top: 10px;
+    margin-top: 40px;
   }
   
   .signup button:hover {
@@ -57,7 +58,6 @@
   }
   
   .signup p {
-    margin-top: 20px;
     text-align: center;
   }
   
@@ -73,3 +73,8 @@
     color: red;
     text-align: center;
   }
+  .signup label{
+    text-align: left;
+  }
+
+  

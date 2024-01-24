@@ -61,7 +61,7 @@ button:hover {
   text-align: center;
 }
 
-a {
+.context a {
   color: #007bff;
   text-decoration: none;
 }
