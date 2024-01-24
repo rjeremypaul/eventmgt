@@ -1,15 +1,19 @@
 .context {
-  max-width: 400px;
+  max-width: 500px;
+  height: 550px;
   margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #dbd6d6;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #e7e7ec;
+  margin-top: 80px;
+  margin-left: 250px;
 }
 .context h2 {
   text-align: center;
-  color: #333;
+  color: #080808;
+  font-size: larger;
 }
 
 form {
@@ -21,32 +25,34 @@ form {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #e3dbdb82;
+  justify-content: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 350px;
 }
 
-.label {
-  margin-bottom: 8px;
+.context label {
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
 input {
-  padding: 8px;
+  padding: 5px;
   margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-button {
+.context button {
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  background-color: #3b92ef;
+  color: #322929;
   border-radius: 3px;
-  cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #59a1ee;
 }
 
 p {
