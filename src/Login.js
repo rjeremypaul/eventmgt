@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import styles from './Loginmodule.css';
-
 function Login() {
   const navigate = useNavigate();
   const { login, isAuthenticated } = useAuth();
@@ -61,10 +60,10 @@ function Login() {
       {!isAuthenticated && (
         <>
           <h2 className={styles['login-title']}>Sign in</h2>
-          {formError && <p style={{ color: 'red' }}>{formError}</p>}
+          {formError && <p  style={{ color: 'red' }}>{formError}</p>}
           <form className={styles['login-form']} onSubmit={handleSubmit}>
             <label className={styles['login-label']}>
-              Email:
+              <h1>Email:</h1>
               <input
                 type="email"
                 name="email"
@@ -74,7 +73,7 @@ function Login() {
               />
             </label>
             <label className={styles['login-label']}>
-              Password:
+              <h1>Password:</h1>
               <input
                 type="password"
                 name="password"
@@ -87,12 +86,15 @@ function Login() {
               Login
             </button>
           </form>
-          <p>
+          <p class = "d">
             Don't have an account? <Link to="/signup">Sign Up</Link>
           </p>
         </>
       )}
+
     </div>
+
+
   );
 }
 

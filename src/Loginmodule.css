@@ -1,6 +1,6 @@
 .context {
-  max-width: 500px;
-  height: 550px;
+  max-width: 450px;
+  height: 500px;
   margin: auto;
   padding: 20px;
   border: 1px solid #dbd6d6;
@@ -10,18 +10,20 @@
   margin-top: 80px;
   margin-left: 250px;
 }
-.context h2 {
-  text-align: center;
-  color: #080808;
+.context h1 {
+  text-align: left;
   font-size: larger;
+  margin-bottom: -20px;
 }
-
-form {
+.context h2 {
+  text-align:  center;
+}
+.context form {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 350px;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,7 +31,7 @@ form {
   justify-content: left;
   margin-top: 30px;
   margin-bottom: 30px;
-  height: 350px;
+  height: 280px;
 }
 
 .context label {
@@ -38,10 +40,13 @@ form {
 }
 
 .context input {
-  padding: 5px;
+  padding: 8px;
   margin-bottom: 12px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
+  row-gap: 1rem;
+  width:300px;
+  margin-top: 30px;
 }
 
 .context button {
@@ -49,7 +54,7 @@ form {
   background-color: #3b92ef;
   color: #322929;
   border-radius: 3px;
-  margin-top: 10px;
+  margin-top: 60px;
 }
 
 button:hover {
@@ -57,11 +62,10 @@ button:hover {
 }
 
 .context p {
-  margin-top: 20px;
   text-align: center;
 }
 
-.context a {
+.contexta {
   color: #007bff;
   text-decoration: none;
 }
@@ -71,5 +75,10 @@ button:hover {
 }
 .context p.error-message {
   color: red;
+  text-align: center;
+  margin-top: 1px;
+}
+.d {
+  margin-top: 90px;
   text-align: center;
 }
