@@ -26,7 +26,7 @@ function Footer() {
         
     </ul>
     <div>
-        <p className='text-neutral-300 text-xs md:text-sm text-center'>&copy; EventMGT {new Date().getFullYear()} | All rights reserved | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/pranaygoel02'>RUERAS</Link> | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/pranaygoel02'>RICERRA</Link> | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/pranaygoel02'>CABIGTING</Link> | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/pranaygoel02'>BALTAZAR</Link></p>
+        <p className='text-neutral-300 text-xs md:text-sm text-center'>&copy; EventMGT {new Date().getFullYear()} | All rights reserved | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/rjeremypaul/EVENTMANAGEMENTAPP'>RUERAS</Link> | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/rjeremypaul/EVENTMANAGEMENTAPP'>RICERRA</Link> | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/rjeremypaul/EVENTMANAGEMENTAPP'>CABIGTING</Link> | <Link className='hover:text-accent hover:underline' target='_blank' to='https://github.com/rjeremypaul/EVENTMANAGEMENTAPP'>BALTAZAR</Link></p>
     </div>
     </div>
   )
