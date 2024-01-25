@@ -16,13 +16,13 @@ body,
   width: 100%;
   font-family: "Space Grotesk", sans-serif;
   @apply bg-gray-100;
-  -webkit-tap-highlight-color: rgba(153, 209, 223, 0);
+  -webkit-tap-highlight-color: rgba(190, 184, 184, 0);
 }
 
 :root {
-  /* --primary: rgb(235, 13, 102);
+  --primary: rgb(235, 13, 102);
   --accent: rgb(50, 192, 239);
-  --secondary: rgb(10, 32, 94); */
+  --secondary: rgb(10, 32, 94);
   --event-swiper-padding-block: 2rem;
 }
 

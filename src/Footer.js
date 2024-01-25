@@ -9,11 +9,10 @@ function Footer() {
     <div className='w-full flex flex-row items-start uppercase gap-4 justify-between container'>
         <div className='flex flex-col items-start gap-2'>
             <Brand/>
-            {/* <p className='font-medium capitalize text-md '>Subtitle Lorem Ipsum!</p> */}
+          
         </div>
         <ul className='flex flex-col items-start gap-1'> 
             <NavLink  className='font-light text-sm ' to={'/explore'}>Explore</NavLink>
-            {/* <NavLink  className='font-light text-sm ' to={`/dashboard`}>Dashboard</NavLink> */}
         </ul>
     </div>
     <hr className='bg-neutral-100 border border-neutral-100 opacity-25'></hr>

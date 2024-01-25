@@ -1,8 +1,8 @@
-// src/components/EventProponents.js
+
 import React from 'react';
 
 function EventProponents({ proponents }) {
-  // You can receive proponents as props and display them here
+
 
   return (
     <div>

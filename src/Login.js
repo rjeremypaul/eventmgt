@@ -30,25 +30,24 @@ function Login() {
     }
 
     try {
-      // Assuming an asynchronous login function
+      
       await loginUser(formData);
-      login(); // Assuming this function sets authentication status
-      navigate('/'); // Redirect to home page after login
+      login(); 
+      navigate('/');
     } catch (error) {
       console.error('Login failed:', error.message);
     }
   };
 
   const loginUser = async ({ email, password }) => {
-    // Your login logic here
+ 
     console.log('User logged in:', { email, password });
-    // Replace with actual login logic
 
-    // Check if stored username and email match logged in user
+
+   
     if (email === localStorage.getItem('email')) {
-      // ... perform additional login logic ...
+     
     } else {
-      // Handle incorrect login attempt
       console.error('Incorrect email or password.');
     }
   };

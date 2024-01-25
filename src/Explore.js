@@ -7,7 +7,7 @@ function Explore() {
   const navigate = useNavigate();
 
   const handleEventClick = (event) => {
-    // Use Link to navigate to the event details page
+  
     navigate(`/event-details/${event.eventName}`, { state: { eventData: event } });
   };
 
@@ -18,7 +18,6 @@ function Explore() {
       <ul>
         {events.map((event) => (
           <li key={event.eventName}>
-            {/* Use Link to navigate to the event details page */}
             <Link to={`/event-details/${event.eventName}`} state={{ eventData: event }}>
               <br />
             <p className="text-accent tracking-[1px] font-semibold items-center gap-2 flex">
@@ -28,8 +27,7 @@ function Explore() {
             {event.eventName}
                 </h1>
                 <hr className="w-full border border-neutral-200"></hr>
-             
-              {/* Display the user-uploaded image or a placeholder */}
+      
               <div className="md:pt-16 " style={{ flexBasis: "50%" }}>
                 {event.eventImage ? (
                                 <img
@@ -39,7 +37,7 @@ function Explore() {
                                 />
                               ) : (
                                 <img
-                                  src="https://via.placeholder.com/150" // Replace with the actual image URL
+                                  src="https://via.placeholder.com/150"
                                   alt={`Thumbnail for ${event.eventName}`}
                                 />
                               )}

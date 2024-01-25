@@ -8,15 +8,15 @@ function Logout() {
 
   useEffect(() => {
     const handleLogout = async () => {
-      console.log('Logging out...'); // Display in console
-      await logout(); // Assuming this function handles logout logic
-      navigate('/'); // Redirect to home page
+      console.log('Logging out...'); 
+      await logout(); 
+      navigate('/');
     };
 
-    handleLogout(); // Call the logout function when the component is mounted
+    handleLogout(); 
   }, [logout, navigate]);
 
-  return null; // Render nothing in the component
+  return null;
 }
 
 export default Logout;

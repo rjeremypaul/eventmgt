@@ -41,14 +41,13 @@ function EventDetails() {
     
     console.log('Saving edited event:', editedEvent);
 
-    // Update local storage with the edited event data
+  
     const events = JSON.parse(localStorage.getItem('events')) || [];
     const updatedEvents = events.map((event) =>
       event.eventName === eventName ? editedEvent : event
     );
     localStorage.setItem('events', JSON.stringify(updatedEvents));
 
-    // Update the event details state and exit edit mode
     navigate(`/event-details/${editedEvent.eventName}`, { state: { eventData: editedEvent } });
     setIsEditing(false);
   };
@@ -58,18 +57,18 @@ function EventDetails() {
     if (isAuthenticated) {
       setIsDeleteModalOpen(true);
     } else {
-      // Show a message or redirect to the login page
+     
       console.log("Please log in to delete this event.");
     }
   };
 
   const confirmDelete = async () => {
-    // Remove the event from local storage
+
     const events = JSON.parse(localStorage.getItem('events')) || [];
     const updatedEvents = events.filter((event) => event.eventName !== eventName);
     localStorage.setItem('events', JSON.stringify(updatedEvents));
 
-    // Redirect to the Explore page after deleting the event
+
     navigate('/explore');
     setIsDeleteModalOpen(false);
   };

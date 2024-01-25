@@ -46,23 +46,23 @@ function CreateEvent() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if the user is authenticated
+   
     if (!isAuthenticated) {
-      // If not authenticated, display an error message
+  
       setFormError('Please log in to create an event.');
       return;
     }
 
-    // Check if any of the form fields is empty
+
     if (Object.values(eventData).some((value) => value === '')) {
       setFormError('Please fill out all fields.');
       return;
     }
 
-    // Add logic to handle the event creation, e.g., API call
+
     console.log('Event created with data:', eventData);
 
-    // Reset form error state
+    
     setFormError('');
 
     try {
@@ -70,7 +70,7 @@ function CreateEvent() {
       savedEvents.push(eventData);
       localStorage.setItem('events', JSON.stringify(savedEvents));
   
-      // Navigate to the EventDetails page
+    
       navigate('/explore', { state: { eventData } });
     } catch (error) {
       console.error('Error saving events:', error);
