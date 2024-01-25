@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import BackBtn from './BackBtn';
 import { MdUpload } from "react-icons/md";
-
+import styles from './CreateEvent.css';
 function CreateEvent() {
   const { isAuthenticated } = useAuth();
   const [eventData, setEventData] = useState({
@@ -80,7 +80,7 @@ function CreateEvent() {
   return (
     <div>
       <BackBtn to={"/"} />
-      <div className="py-4">
+      <nav className="page">
         <h1 className="page-title">{pageTitle}</h1>
       {formError && <p style={{ color: 'red' }}>{formError}</p>}
       {isAuthenticated ? (
@@ -138,10 +138,10 @@ function CreateEvent() {
           
         </form>
       ) : (
-        <p>Please log in to create an event.</p>
+        <nav class = "l"><p>Please log in to create an event.</p></nav>
       )}
 
-    </div>
+    </nav>
     </div>
   );
 }

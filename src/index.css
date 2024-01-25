@@ -5,7 +5,6 @@ body {
   background-image: url("");
   background-color: #cccccc;
 }
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,7 +23,7 @@ body,
 :root {
   --primary: rgb(235, 13, 102);
   --accent: rgb(50, 192, 239);
-  --secondary: rgb(91, 99, 121);
+  --secondary: rgb(10, 32, 94);
   --event-swiper-padding-block: 2rem;
 }
 
