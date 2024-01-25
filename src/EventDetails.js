@@ -111,95 +111,49 @@ function EventDetails() {
     
     <div>
       <BackBtn to="/explore" />
-      <section className="container py-8 pb-16 w-full font-poppins">
-      <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:items-start">
-
-      {isAuthenticated ? ( // Only show the Edit and Delete buttons if the user is authenticated
-        <div>
-          {isEditing ? (
-        <>
-          <label>
-            Event Name:
-            <input
-              type="text"
-              name="eventName"
-              value={editedEvent.eventName}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Event Description:
-            <input
-              type="text"
-              name="eventDescription"
-              value={editedEvent.eventDescription}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Event Location:
-            <input
-              type="text"
-              name="eventLocation"
-              value={editedEvent.eventLocation}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Event Date:
-            <input
-              type="text"
-              name="eventDate"
-              value={editedEvent.eventDate}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-                Event Image:
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </label>
-          <br />
-          <br />
-          <button onClick={handleSave}>Save</button>
-        </>
-      ) : (
-        <>
-          <p>Event Name: {eventDetails.eventName}</p>
-              <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
-                About
-              </h2>
-              <div className="display-linebreak text-neutral-800 text-sm font-grostek">
-                <p>Event Description: {eventDetails.eventDescription}</p>
-                <p>Event Location: {eventDetails.eventLocation}</p>
-                <p>Event Date: {eventDetails.eventDate}</p>
-              </div>
+        <section className="container py-8 pb-16 w-full font-poppins">
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:items-start">
+            <div className="col-span-4 space-y-4">
               {editedEvent.eventImage && (
-                <img
-                  src={editedEvent.eventImage}
-                  alt="Event"
-                  style={{ maxWidth: '100%', maxHeight: '200px', marginTop: '10px' }}
-                />
-              )}
-              <button
-                onClick={handleEdit}
-                className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Edit
-              </button>
-              <button
+                  <img
+                    src={editedEvent.eventImage}
+                    alt="Event"
+                    className="rounded-lg w-full aspect-video object-cover"
+                  />
+                )}
+                <div className="flex flex-col md:hidden w-full space-y-4">
+                  <div className="rounded-lg flex flex-col gap-4 outline w-full outline-1 outline-neutral-300 p-6">
+                  <h2 className="font-bold text-xl">{eventDetails.eventName}</h2>
+                
+                  </div>
+                </div>
+                <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
+                  About
+                </h2>
+                <div className="display-linebreak text-neutral-800 text-sm font-grostek">
+                  {eventDetails.eventDescription}
+                </div>
+                <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
+                  Terms and Conditions
+                </h2>
+                <div className="display-linebreak text-neutral-800 text-sm font-grostek">
+                Please carry a valid ID proof along with you.
+                <br/>
+                No refunds on purchased ticket are possible, even in case of any rescheduling.<br/>
+                Security procedures, including frisking remain the right of the management.<br/>
+                No dangerous or potentially hazardous objects including but not limited to weapons, knives, guns, fireworks, helmets, lazer devices, bottles, musical instruments will be allowed in the venue and may be ejected with or without the owner from the venue.<br/>
+                The sponsors/performers/organizers are not responsible for any injury or damage occurring due to the event.<br/>
+                People in an inebriated state may not be allowed entry.<br/>
+                Organizers hold the right to deny late entry to the event.<br/>
+                Venue rules apply.
+                </div>
+                <button
                 onClick={handleDelete}
                 className="ml-4 mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
               >
                 Delete
               </button>
-    {isDeleteModalOpen && (
+          {isDeleteModalOpen && (
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div className="fixed inset-0 transition-opacity">
@@ -231,100 +185,53 @@ function EventDetails() {
           </div>
         </div>
       )}
-        </>
-      )}
-      </div>
-      ) : (
-        
-        <>
-          <div className="col-span-4 space-y-4">
-            {editedEvent.eventImage && (
-                <img
-                  src={editedEvent.eventImage}
-                  alt="Event"
-                  className="rounded-lg w-full aspect-video object-cover"
-                />
-              )}
-              <div className="flex flex-col md:hidden w-full space-y-4">
-                <div className="rounded-lg flex flex-col gap-4 outline w-full outline-1 outline-neutral-300 p-6">
+            </div>
+            <div className="col-span-2 hidden md:block w-full space-y-4">
+              <div className="rounded-lg flex flex-col gap-4 outline w-full  outline-1 outline-neutral-300 p-6">
                 <h2 className="font-bold text-xl">{eventDetails.eventName}</h2>
-              
+                <h2 className="inline-flex items-center gap-2 text-sm">
+                  <IoCalendarClearOutline /> {eventDetails.eventDate}
+                </h2>
+                
+                <h2 className="inline-flex items-center gap-2 text-sm">
+                  <IoLocationOutline /> {eventDetails.eventLocation}
+                </h2>
+                <h2 className="inline-flex flex-wrap items-center gap-2 text-sm">
+                  <>
+                    <iframe
+                      title="map"
+                      className="w-full h-max outline outline-1 outline-neutral-300 shadow-md rounded-lg flex-1 mt-2"
+                      src={`https://maps.google.com/maps?q=${eventDetails.eventLocation[1]},${eventDetails.eventLocation[2]}&hl=en&output=embed`}
+                    ></iframe>
+                  </>
+                </h2>
+              </div>
+              <div className="inline-flex w-full items-center gap-2">
+                <div className="mr-auto">
+                  <h2 className="font-semibold text-lg">Invite your friends</h2>
+                    <p className="text-xs text-neutral-500 font-grostek">
+                      and enjoy a shared experience!
+                    </p>
                 </div>
-
-
-
+                {shareLinks?.map((link, index) => (
+                  <a
+                    href={link?.share(
+                    `${window.location.origin}${pathname}`,
+                    eventDetails.eventName
+                    )}
+                    target="_blank"
+                    title={`Share on ${link?.title}`}
+                    className={`border flex items-center justify-center rounded-full p-2 text-xl hover:scale-125 transition-all text-white bg-gradient-to-br ${link?.color}`}
+                  >
+                  {link?.icon}
+                </a>
+                ))}
               </div>
-              <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
-                About
-              </h2>
-              <div className="display-linebreak text-neutral-800 text-sm font-grostek">
-                {eventDetails.eventDescription}
-              </div>
-              <h2 className="font-semibold py-2 border-b border-neutral-300 text-lg">
-                Terms and Conditions
-              </h2>
-              <div className="display-linebreak text-neutral-800 text-sm font-grostek">
-              Please carry a valid ID proof along with you.
-              <br/>
-              No refunds on purchased ticket are possible, even in case of any rescheduling.<br/>
-              Security procedures, including frisking remain the right of the management.<br/>
-              No dangerous or potentially hazardous objects including but not limited to weapons, knives, guns, fireworks, helmets, lazer devices, bottles, musical instruments will be allowed in the venue and may be ejected with or without the owner from the venue.<br/>
-              The sponsors/performers/organizers are not responsible for any injury or damage occurring due to the event.<br/>
-              People in an inebriated state may not be allowed entry.<br/>
-              Organizers hold the right to deny late entry to the event.<br/>
-              Venue rules apply.
-              </div>
-              
-
-          </div>
-          <div className="col-span-2 hidden md:block w-full space-y-4">
-            <div className="rounded-lg flex flex-col gap-4 outline w-full  outline-1 outline-neutral-300 p-6">
-              <h2 className="font-bold text-xl">{eventDetails.eventName}</h2>
-              <h2 className="inline-flex items-center gap-2 text-sm">
-                <IoCalendarClearOutline /> {eventDetails.eventDate}
-              </h2>
-              
-              <h2 className="inline-flex items-center gap-2 text-sm">
-                <IoLocationOutline /> {eventDetails.eventLocation}
-              </h2>
-              <h2 className="inline-flex flex-wrap items-center gap-2 text-sm">
-                <>
-                  <iframe
-                    title="map"
-                    className="w-full h-max outline outline-1 outline-neutral-300 shadow-md rounded-lg flex-1 mt-2"
-                    src={`https://maps.google.com/maps?q=${eventDetails.eventLocation[1]},${eventDetails.eventLocation[2]}&hl=en&output=embed`}
-                  ></iframe>
-                </>
-              </h2>
             </div>
-            <div className="inline-flex w-full items-center gap-2">
-              <div className="mr-auto">
-                <h2 className="font-semibold text-lg">Invite your friends</h2>
-                  <p className="text-xs text-neutral-500 font-grostek">
-                    and enjoy a shared experience!
-                  </p>
-              </div>
-              {shareLinks?.map((link, index) => (
-                <a
-                  href={link?.share(
-                  `${window.location.origin}${pathname}`,
-                  eventDetails.eventName
-                  )}
-                  target="_blank"
-                  title={`Share on ${link?.title}`}
-                  className={`border flex items-center justify-center rounded-full p-2 text-xl hover:scale-125 transition-all text-white bg-gradient-to-br ${link?.color}`}
-                >
-                {link?.icon}
-              </a>
-              ))}
-            </div>
-          </div>
-       
-        </>
-        
-      )}
-      </div>
-       </section>
+          
+          
+        </div>
+        </section>
     </div>
    
   );

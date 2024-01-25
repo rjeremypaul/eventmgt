@@ -12,7 +12,7 @@ function Explore() {
   };
 
   return (
-    <section className="container py-4 md:py-16">
+    <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
 <div>
       <h1 className="pb-12 text-4xl font-bold">Explore the best events happening around you</h1>
       <ul>
@@ -20,20 +20,27 @@ function Explore() {
           <li key={event.eventName}>
             {/* Use Link to navigate to the event details page */}
             <Link to={`/event-details/${event.eventName}`} state={{ eventData: event }}>
-              <h2>{event.eventName}</h2>
+            <h1 className="text-3xl md:text-5xl text-primary font-semibold md:leading-normal">
+            {event.eventName}
+                </h1>
+             
               {/* Display the user-uploaded image or a placeholder */}
-              {event.eventImage ? (
-                <img
-                  src={event.eventImage}
-                  alt={`Thumbnail for ${event.eventName}`}
-                  style={{ maxWidth: '150px', maxHeight: '150px' }}
-                />
-              ) : (
-                <img
-                  src="https://via.placeholder.com/150" // Replace with the actual image URL
-                  alt={`Thumbnail for ${event.eventName}`}
-                />
-              )}
+              <div className="md:pt-16 " style={{ flexBasis: "50%" }}>
+                {event.eventImage ? (
+                                <img
+                                  src={event.eventImage}
+                                  alt={`Thumbnail for ${event.eventName}`}
+                                  className="w-full"
+                                />
+                              ) : (
+                                <img
+                                  src="https://via.placeholder.com/150" // Replace with the actual image URL
+                                  alt={`Thumbnail for ${event.eventName}`}
+                                />
+                              )}
+
+              </div>
+              
             </Link>
           </li>
         ))}

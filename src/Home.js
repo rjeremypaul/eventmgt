@@ -97,7 +97,7 @@ function Landing() {
           </div>
       <section className="flex flex-col-reverse  lg:flex-row w-full py-8 md:py-16 justify-between gap-8 md:gap-0 container">
       <div className="md:pt-16 " style={{ flexBasis: "50%" }}>
-      <img className="w-full" src={Hero2} alt="Event Hero" />
+        <img className="w-full" src={Hero2} alt="Event Hero" />
         </div>
         <div
           className="flex flex-col gap-4 items-start justify-evenly text-left py-8 lg:pl-16"
