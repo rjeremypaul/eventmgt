@@ -1,4 +1,4 @@
-.page {
+.project {
     max-width: 500px;
     height: 800px;
     margin: auto;
@@ -10,13 +10,13 @@
     margin-top: 80px;
     justify-content: center;
   }
-  .page {
+  .project  {
     text-align: center;
     color: #080808;
     font-size: larger;  
   }
   
-  .page form {
+  .project  form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
@@ -31,12 +31,12 @@
     height: 670px;
   }
   
-  .page label {
+  .project  label {
     margin-bottom: -3px;
     text-align: right;
   }
   
-  .page  input {
+  .project   input {
     padding: 2px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -45,7 +45,7 @@
     margin-left: 30px;
   }
   
-  .page  button {
+  .project  button {
     padding: 10px;
     background-color: #3b92ef;
     color: #322929;
@@ -53,27 +53,27 @@
     margin-top: 40px;
   }
   
-  .page  button:hover {
+  .project   button:hover {
     background-color: #3a70aa;
   }
   
-  .page p {
+  .project  p {
     text-align: center;
   }
   
-  .page  a {
+  .project   a {
     color: #007bff;
     text-decoration: none;
   }
   
-  .page a:hover {
+  .project  a:hover {
     text-decoration: underline;
   }
-  .page  p.error-message {
+  .project   p.error-message {
     color: red;
     text-align: center;
   }
-  .page  label{
+  .project   label{
     text-align: left;
   }
   

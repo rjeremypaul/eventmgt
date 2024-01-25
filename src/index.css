@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 body {
-  background-image: url("");
   background-color: #cccccc;
 }
 @tailwind base;
@@ -17,13 +16,13 @@ body,
   width: 100%;
   font-family: "Space Grotesk", sans-serif;
   @apply bg-gray-100;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(153, 209, 223, 0);
 }
 
 :root {
-  --primary: rgb(235, 13, 102);
+  /* --primary: rgb(235, 13, 102);
   --accent: rgb(50, 192, 239);
-  --secondary: rgb(10, 32, 94);
+  --secondary: rgb(10, 32, 94); */
   --event-swiper-padding-block: 2rem;
 }
 
@@ -264,7 +263,7 @@ body {
 }
 
 .hover\:bg-blue-600:hover {
-  background-color: #2c5282;
+  background-color: #9baec6;
 }
 
 .focus\:outline-none:focus {

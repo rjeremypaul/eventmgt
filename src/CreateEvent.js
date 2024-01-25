@@ -80,7 +80,7 @@ function CreateEvent() {
   return (
     <div>
       <BackBtn to={"/"} />
-      <nav className="page">
+      <div className="project">
         <h1 className="page-title">{pageTitle}</h1>
       {formError && <p style={{ color: 'red' }}>{formError}</p>}
       {isAuthenticated ? (
@@ -138,10 +138,10 @@ function CreateEvent() {
           
         </form>
       ) : (
-        <nav class = "l"><p>Please log in to create an event.</p></nav>
+        <p>Please log in to create an event.</p>
       )}
 
-    </nav>
+    </div>
     </div>
   );
 }

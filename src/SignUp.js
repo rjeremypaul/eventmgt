@@ -27,7 +27,7 @@ function SignUp() {
     }
 
     try {
-      // Check for duplicates before registering
+   
       const emailExists = await checkEmailExistenceInDatabase(formData.email);
       const usernameExists = await checkUsernameExistenceInDatabase(formData.username);
 
@@ -36,16 +36,16 @@ function SignUp() {
         return;
       }
 
-      // Assuming an asynchronous registration function
+      
       const userData = await registerUser(formData);
       console.log('User registered:', userData);
       setIsAccountCreated(true);
 
-      // Save username and email in local storage
+  
       localStorage.setItem('username', userData.username);
       localStorage.setItem('email', userData.email);
 
-      // Redirect to the login page after successful account creation
+     
       navigate('/login');
     } catch (error) {
       console.error('Registration failed:', error.message);
@@ -53,10 +53,8 @@ function SignUp() {
   };
 
   const checkEmailExistenceInDatabase = async (email) => {
-    // Replace this with your actual logic to check if the email exists in the database
-    // Simulating a promise-based asynchronous operation
+
     return new Promise((resolve) => {
-      // Assume checking against a list of existing emails
       const existingEmails = ['existing@example.com', 'another@example.com'];
       resolve(existingEmails.includes(email));
     });
