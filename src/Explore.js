@@ -20,9 +20,14 @@ function Explore() {
           <li key={event.eventName}>
             {/* Use Link to navigate to the event details page */}
             <Link to={`/event-details/${event.eventName}`} state={{ eventData: event }}>
+              <br />
+            <p className="text-accent tracking-[1px] font-semibold items-center gap-2 flex">
+            <hr className="w-20 h-1 bg-accent"></hr>
+          </p>
             <h1 className="text-3xl md:text-5xl text-primary font-semibold md:leading-normal">
             {event.eventName}
                 </h1>
+                <hr className="w-full border border-neutral-200"></hr>
              
               {/* Display the user-uploaded image or a placeholder */}
               <div className="md:pt-16 " style={{ flexBasis: "50%" }}>
@@ -30,7 +35,7 @@ function Explore() {
                                 <img
                                   src={event.eventImage}
                                   alt={`Thumbnail for ${event.eventName}`}
-                                  className="w-full"
+                                  style={{ maxWidth: '550px', maxHeight: '550px' }}
                                 />
                               ) : (
                                 <img
